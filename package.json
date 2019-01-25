@@ -2,6 +2,10 @@
   "name": "brainsum_drupal8_startertheme",
   "version": "1.0.0",
   "description": "Drupal 8 coding standards ready startertheme powered by Gulp 4 based on Classy.",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/brainsum/drupal8-startertheme.git"
+  },
   "author": "Krisztian Pinter <kpinter@brainsum.com>",
   "license": "ISC",
   "scripts": {
