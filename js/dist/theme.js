@@ -1,0 +1,1 @@
+!function(i){"use strict";Drupal.behaviors.aDiginomicaFunction={attach:function(){}}}(jQuery);

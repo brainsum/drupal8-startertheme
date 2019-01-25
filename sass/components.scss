@@ -1,0 +1,34 @@
+/**
+ * @file
+ * SMACSS: components
+ *
+ * Discrete, reusable UI elements.
+ * Import all custom components from ./components/ subdirectory
+ * Turn here on only what you actually need.
+ *
+ * ITCSS: components
+ */
+
+/**
+ * Imports
+ *
+ * First import our custom variables and mixins
+ */
+@import 'index';
+
+/**
+ * Components
+ *
+ * Specific UI components.
+ * This is where majority of our work takes place and our UI components are
+ * often composed of Objects and Components.
+ * They contain cosmetic CSS and they can be directly overwritten to fit your
+ * UI Kit style.
+ */
+
+@import "5.components/components.breadcrumb";
+@import "5.components/components.button";
+@import "5.components/components.form";
+@import "5.components/components.navigation";
+@import "5.components/components.search";
+@import "5.components/components.typography";

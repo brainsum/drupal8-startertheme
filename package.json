@@ -1,0 +1,45 @@
+{
+  "name": "brainsum_drupal8_startertheme",
+  "version": "1.0.0",
+  "description": "Drupal 8 coding standards ready startertheme powered by Gulp 4 based on Classy.",
+  "author": "Krisztian Pinter <kpinter@brainsum.com>",
+  "license": "ISC",
+  "scripts": {
+    "start": "gulp",
+    "prod": "gulp prod",
+    "sassDev": "gulp sassDev",
+    "sassProd": "gulp sassProd",
+    "sassLint": "gulp sassLint",
+    "scripts": "gulp scripts"
+  },
+  "keywords": [
+    "drupal",
+    "drupal8",
+    "gulp",
+    "gulp4",
+    "sass",
+    "startertheme",
+    "theme",
+    "twig"
+  ],
+  "dependencies": {
+    "@fortawesome/fontawesome-free": "^5.6.3"
+  },
+  "devDependencies": {
+    "browser-sync": "^2.26.3",
+    "eslint-config-airbnb-base": "^13.1.0",
+    "gulp": "^4.0.0",
+    "gulp-autoprefixer": "^6.0.0",
+    "gulp-css-purge": "^3.0.9",
+    "gulp-csscomb": "^3.0.8",
+    "gulp-eslint": "^5.0.0",
+    "gulp-npm-dist": "^1.0.2",
+    "gulp-sass": "^4.0.2",
+    "gulp-sourcemaps": "^2.6.4",
+    "gulp-stylelint": "^8.0.0",
+    "gulp-uglify": "^3.0.1",
+    "stylelint": "^9.10.1",
+    "stylelint-config-standard": "^18.2.0",
+    "stylelint-scss": "^3.5.1"
+  }
+}

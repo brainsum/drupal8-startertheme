@@ -1,0 +1,122 @@
+@charset "UTF-8";
+/**
+ * @file
+ * SMACSS: layout
+ *
+ * Design-patterns, and macro arrangement of a web page,
+ * including any grid systems.
+ *
+ * ITCSS: objects
+ */
+/**
+ * Imports
+ * First import our custom variables and mixins
+ */
+/**
+ * @file
+ * Sass index file
+ *
+ * The main importer and organizer sass file.
+ *
+ */
+/**
+ * Settings
+ *
+ * Setting files contain **global** configurations that are shared by more than
+ * one modules.
+ * Settings that are connected to one and only module are a part of the module
+ * itself.
+ * Local configurations should be contained into the modules (objects,
+ * components, etc.) that are related to.
+ */
+/**
+ * @file
+ * Settings
+ *
+ * Setting files contain **global** configurations that are shared by more than
+ * one modules. Settings that are connected to one and only module are a part
+ * of the module itself.
+ * Local configurations should be contained into the modules (objects,
+ * components, etc.) that are related to.
+ * It’s important not to output any CSS in the first 2 layers.
+ */
+/**
+ * @file
+ * Breakpoint Settings
+ *
+ * - Define breakpoint variables
+ */
+/**
+ * @file
+ * Color Settings
+ *
+ * - Define color variables
+ */
+/**
+ * @file
+ * Breakpoint Settings
+ *
+ * - Define breakpoint variables
+ */
+/**
+ * @file
+ * Typography Settings
+ *
+ * - Import Webfonts
+ * - Define Font-families
+ * - Define Typography-related global variables
+ */
+/**
+ * Tools
+ *
+ * Globally used mixins and functions.
+ * It’s important not to output any CSS in the first 2 layers.
+ */
+/**
+ * @file
+ * Tools
+ *
+ * Tools are sets of globally used sass mixins and functions. Mixins that are
+ * connected to one and only module are a part of the module itself.
+ * It’s important not to output any CSS in the first 2 layers.
+ */
+/**
+ * Utilities
+ *
+ * Utilities and helper classes with ability to override anything which goes
+ * before in the triangle, eg. hide helper class.
+ * They are usually one line of code and have !important to make sure they
+ * override all element styles when used.
+ */
+/**
+ * Layout
+ *
+ * Class-based selectors which define undecorated design patterns,
+ * for example media object known from OOCSS. They provide structure to your
+ * content, do not contain any cosmetic CSS and they should never been directly
+ * overwritten.
+ * This is the first layer in which we find class-based selectors. These are
+ * concerned with styling non-cosmetic design patterns, or 'objects'. Objects
+ * can range from something as simple as a .wrapper element, to layout systems,
+ * through to things.
+ */
+/**
+ * @file
+ * Site Footer
+ *
+ * Footer is not a component, it's a layout section. Therefore all footer
+ * related styles, rules come here except what has an independent component, ie.
+ * Scroll to Top button.
+ */
+/**
+ * @file
+ * Site Header
+ *
+ * Header is not a component, it's a layout section. Therefore all header
+ * related styles, rules come here except what has an independent component, ie.
+ * Navigation component.
+ */
+
+/*# sourceMappingURL=data:application/json;charset=utf8;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoibGF5b3V0LmNzcyIsInNvdXJjZXMiOlsibGF5b3V0LnNjc3MiLCJfaW5kZXguc2NzcyIsIjEuc2V0dGluZ3MvX3NldHRpbmdzLmFsbC5zY3NzIiwiMS5zZXR0aW5ncy9fc2V0dGluZ3MuYnJlYWtwb2ludHMuc2NzcyIsIjEuc2V0dGluZ3MvX3NldHRpbmdzLmNvbG9ycy5zY3NzIiwiMS5zZXR0aW5ncy9fc2V0dGluZ3MuZ3JpZC5zY3NzIiwiMS5zZXR0aW5ncy9fc2V0dGluZ3MudHlwb2dyYXBoeS5zY3NzIiwiMi50b29scy9fdG9vbHMuYWxsLnNjc3MiLCI0LmxheW91dC9fbGF5b3V0LmZvb3Rlci5zY3NzIiwiNC5sYXlvdXQvX2xheW91dC5oZWFkZXIuc2NzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiO0FBQUE7Ozs7Ozs7O0dBUUc7QUFFSDs7O0dBR0c7QUNiSDs7Ozs7O0dBTUc7QUFFSDs7Ozs7Ozs7O0dBU0c7QUNqQkg7Ozs7Ozs7Ozs7R0FVRztBQ1ZIOzs7OztHQUtHO0FDTEg7Ozs7O0dBS0c7QUNMSDs7Ozs7R0FLRztBQ0xIOzs7Ozs7O0dBT0c7QUxjSDs7Ozs7R0FLRztBTTFCSDs7Ozs7OztHQU9HO0FOdUJIOzs7Ozs7O0dBT0c7QURyQkg7Ozs7Ozs7Ozs7O0dBV0c7QVEzQkg7Ozs7Ozs7R0FPRztBQ1BIOzs7Ozs7O0dBT0cifQ== */
+
+/*# sourceMappingURL=layout.css.map */

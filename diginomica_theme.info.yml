@@ -1,0 +1,26 @@
+# Theme's name for admin UI, change for your project, like Diginomica Theme
+name: "BRAINSUM's Drupal 8 startertheme"
+type: theme
+# Short description text for admin UI, change for your project
+description: "Drupal 8 coding standards ready startertheme powered by Gulp 4 based on Classy."
+core: 8.x
+# screenshot cover image for admin UI (588x438): take a screenshot about home page
+screenshot: screenshot.png
+package: brainsum
+# Defines the base theme, change it for your needs
+base theme: classy
+# Defines libraries group in which we can add css/js.
+libraries:
+  - diginomica_theme/global-styling
+# Regions, change it for your needs (don't forget change page template too)
+regions:
+  top_bar: Top Bar
+  header: Header
+  navigation: Navigation
+  featured: Featured
+  top: Bottom
+  content: Content
+  sidebar: Sidebar
+  bottom: Bottom
+  footer: Footer
+  admin: Admin Tools
