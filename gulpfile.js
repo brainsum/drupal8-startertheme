@@ -11,6 +11,7 @@ var sass = require('gulp-sass');
 var sourcemaps = require('gulp-sourcemaps');
 var stylelint = require('gulp-stylelint');
 var uglify = require('gulp-uglify');
+var yaml = require('gulp-yaml-validate');
 
 // Store all paths
 var paths = {
@@ -131,6 +132,31 @@ function scriptsTask() {
 }
 
 /**
+ * JavaScript:Linting Task
+ *
+ * @return {object} Linted (auto fixable, warnings printed to console about
+ * others) JavaScript files.
+*/
+function scriptsLintTask() {
+  return gulp
+    .src(paths.jsSrc)
+    .pipe(eslint({ fix: true }))
+    .pipe(eslint.format())
+    .pipe(eslint.failAfterError());
+}
+
+/**
+ * YAML:Linting Task
+ *
+ * @return {object} Linted YAML config files.
+ */
+function yamlLintTask() {
+  return gulp
+    .src('./*.yml')
+    .pipe(yaml({ safe: true }));
+}
+
+/**
  * BrowserSync Task
  *
  * Watching Sass and JavaScript source files for changes.
@@ -139,7 +165,7 @@ function scriptsTask() {
  */
 function browserSyncTask(done) {
   browserSync.init({
-    proxy: 'diginomica.test',
+    proxy: 'projectname.test',
     open: false
   });
   gulp.watch(paths.sass, sassDevTask);
@@ -164,9 +190,12 @@ var compileTask = gulp.parallel(sassDevTask, scriptsTask);
 // export tasks
 exports.default = gulp.series(copyVendorTask, compileTask, browserSyncTask);
 exports.prod = gulp.parallel(copyVendorTask, sassProdTask, scriptsTask);
+exports.lint = gulp.parallel(sassLintTask, scriptsLintTask, yamlLintTask);
 exports.vendors = copyVendorTask;
 exports.sassDev = sassDevTask;
 exports.sassProd = sassProdTask;
-exports.sassLint = sassLintingTask;
+exports.sassLint = sassLintTask;
 exports.scripts = scriptsTask;
+exports.scriptsLint = scriptsLintTask;
 exports.watch = browserSyncTask;
+exports.yamlLint = yamlLintTask;

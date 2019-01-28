@@ -11,10 +11,13 @@
   "scripts": {
     "start": "gulp",
     "prod": "gulp prod",
+    "lint": "gulp lint",
     "sassDev": "gulp sassDev",
     "sassProd": "gulp sassProd",
     "sassLint": "gulp sassLint",
-    "scripts": "gulp scripts"
+    "scripts": "gulp scripts",
+    "scriptsLint": "gulp scriptsLint",
+    "yamlLint": "gulp yamlLint"
   },
   "keywords": [
     "drupal",
@@ -42,6 +45,7 @@
     "gulp-sourcemaps": "^2.6.4",
     "gulp-stylelint": "^8.0.0",
     "gulp-uglify": "^3.0.1",
+    "gulp-yaml-validate": "^1.0.2",
     "stylelint": "^9.10.1",
     "stylelint-config-standard": "^18.2.0",
     "stylelint-scss": "^3.5.1"
