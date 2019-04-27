@@ -1,6 +1,6 @@
 {
   "name": "brainsum_drupal8_startertheme",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Drupal 8 coding standards ready startertheme powered by Gulp 4 based on Classy.",
   "repository": {
     "type": "git",
@@ -33,7 +33,7 @@
     "@fortawesome/fontawesome-free": "^5.6.3"
   },
   "devDependencies": {
-    "browser-sync": "^2.26.3",
+    "browser-sync": "^2.26.5",
     "eslint-config-airbnb-base": "^13.1.0",
     "gulp": "^4.0.0",
     "gulp-autoprefixer": "^6.0.0",
