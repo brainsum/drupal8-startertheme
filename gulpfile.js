@@ -32,9 +32,7 @@ var paths = {
 function copyVendorTask() {
   return gulp
     .src(npmDist(), { base: './node_modules' })
-    .pipe(
-      gulp.dest('./vendors/')
-    );
+    .pipe(gulp.dest('./vendors/'));
 }
 
 /**
@@ -102,7 +100,7 @@ function sassProdTask() {
  * @return {object} Linted version of SASS (auto fixable) and warnings printed to
  * console.
  */
-function sassLintingTask() {
+function sassLintTask() {
   return gulp
     .src(paths.sass)
     .pipe(stylelint({
@@ -186,10 +184,11 @@ function browserSyncReloadTask(done) {
 
 // Define complex tasks
 var compileTask = gulp.parallel(sassDevTask, scriptsTask);
+var compileProdTask = gulp.parallel(sassProdTask, scriptsTask);
 
 // export tasks
 exports.default = gulp.series(copyVendorTask, compileTask, browserSyncTask);
-exports.prod = gulp.parallel(copyVendorTask, sassProdTask, scriptsTask);
+exports.prod = gulp.series(copyVendorTask, compileProdTask);
 exports.lint = gulp.parallel(sassLintTask, scriptsLintTask, yamlLintTask);
 exports.vendors = copyVendorTask;
 exports.sassDev = sassDevTask;
