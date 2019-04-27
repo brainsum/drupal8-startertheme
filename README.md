@@ -1,21 +1,15 @@
 # BRAINSUM's Drupal 8 startertheme
 
 * Created by: [Krisztian Pinter](kpinter@brainsum.com)
-
 * Created in: 2019.
-
-* Updated on: 2019.01.25.
+* Updated on: 2019.04.26.
 
 ## Table of Contents
 
 * About
-
 * Installation
-
 * Usage
-
 * Structure
-
 * Coding Standards
 
 ## About
@@ -32,8 +26,8 @@ to working with this startertheme.
 
 ```bash
 cd {project}/web/themes/custom/
-git clone git@github.com:brainsum/drupal8-startertheme.git
-cd drupal8-startertheme
+git clone git@github.com:brainsum/drupal8-startertheme.git projectname_theme
+cd projectname_theme
 npm install
 ```
 
@@ -60,19 +54,13 @@ task, you need to edit `proxy` setting in `browserSyncTask`!**
 Theme's structure based on Drupal 8 coding standards and theme recommendations:
 
 * `css` directory: for all compiled css files (not commit map files)
-
 * `fonts` directory: for webfonts
-
 * `images` directory: for all theme images and graphics
-
 * `js` directory: for all JavaScript files*
-
-* `node_modules` directory: we need install all required frontend vendor libraries here
-
+* `node_modules` directory: we need install all required frontend vendor
+libraries here
 * `sass` directory: Source sass files
-
 * `templates` directory: all twig templates in Drupal module based structure
-
 * `vendors` directory: all production needed vendor libraries used from here
 
 ### Sass structure
@@ -81,15 +69,10 @@ We use SMACSS and ITCSS here for structuring all sass files. We gave numbers too
 for category order:
 
 * `1.settings`: all settings file
-
 * `2.tools`: general mixins and sass functions
-
 * `3.base`: css reset and element (html5 tags) styling
-
 * `4.layout`: all grid and page layout related things
-
 * `5.components`: reusable blocks (try to use it more and more)
-
 * `6.utilities`: utility helper classes; mostly from `2.tools`
 
 To theming pages and __unique__ blocks we use `theme.scss` file. All files and
@@ -106,12 +89,40 @@ and place the compiled js files to `dist` directory.
 
 If you need a third party css/sass/js library and you want use it as library
 (don't merge it our src files): install it with npm to `node_modules`, then
-just run the `copyVendorsTask` from gulp.js. (It's in default/start and prod
-tasks too.) It will be search dist version of library and copy it to `vendors`
-directory.
+just run the `copyVendorsTask` from gulp.js. (It's part of default/start and
+prod  tasks too.) It will be search dist version of library and copy it to
+`vendors` directory.
 For example __Font Awesome 5 Free__ library added to `dependencies` and run
 `vendors` task. You can see, it has been copied from `node_modules` to `vendors`
 directory. It's just for demonstration purposes, you can remove it.
+
+### Drupal libraries
+
+You have to manage you compiled CSS and JavaScript files as Drupal libraries.
+All libraries are defined in `libraries.yml` file. There is a global library:
+we will load that in all pages. But you have to create and attach different
+libraries for specified blocks / pages. For example you can create libraries for
+sliders, views, pages.
+Don't forget to add dependencies for each libraries, and attributes for files
+like: minified, external, async... Example:
+
+```yaml
+user-profile:
+  js:
+    //platform.twitter.com/widgets.js: { type: external, attributes: { async: true } }
+    js/dist/user-profile.js: { minified: true }
+  dependencies:
+    - core/jquery
+    - core/drupal
+```
+
+### CSS Media queries and Breakpoints
+
+We don't provide any grid systems or breakpoint is SASS: you can use whatever
+you want. But there is a default `breakpoints.yml` file, where are some
+predefined breakpoints for Drupal. You have to keep it in sync with your
+actually breakpoints in SASS. (This file is only a placeholder/template file,
+for easier start.)
 
 ## Coding Standards
 
