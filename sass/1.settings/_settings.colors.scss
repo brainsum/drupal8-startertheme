@@ -4,3 +4,16 @@
  *
  * - Define color variables
  */
+
+// color definitions
+$color-blue             : #0091cc;
+$color-yellow           : #f7ca00;
+$color-turquoise        : #66d1ca;
+$color-turquoise--dark  : #53c2bc;
+
+// colors by functions
+$color-brand            : $color-yellow;
+$color-primary          : $color-blue;
+$color-secondary        : $color-turquoise;
+$body-background        : white;
+$body-font-color        : black;
