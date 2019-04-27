@@ -11,7 +11,7 @@ package: brainsum
 base theme: classy
 # Defines libraries group in which we can add css/js.
 libraries:
-  - diginomica_theme/global-styling
+  - starter_theme/global-styling
 # Regions, change it for your needs (don't forget change page template too)
 regions:
   top_bar: Top Bar
