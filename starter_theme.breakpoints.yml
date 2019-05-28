@@ -9,28 +9,28 @@ starter_theme.small:
     - 3x
 starter_theme.medium:
   label: medium
-  mediaQuery: 'all and (min-width: 48rem)'
+  mediaQuery: 'all and (min-width: 30em)'
   weight: 1
   multipliers:
     - 1x
     - 2x
 starter_theme.large:
   label: large
-  mediaQuery: 'all and (min-width: 64rem)'
+  mediaQuery: 'all and (min-width: 40em)'
   weight: 2
   multipliers:
     - 1x
     - 2x
 starter_theme.xlarge:
   label: xlarge
-  mediaQuery: 'all and (min-width: 96rem)'
+  mediaQuery: 'all and (min-width: 60em)'
   weight: 3
   multipliers:
     - 1x
     - 2x
 starter_theme.xxlarge:
   label: xxlarge
-  mediaQuery: 'all and (min-width: 120rem)'
+  mediaQuery: 'all and (min-width: 75em)'
   weight: 4
   multipliers:
     - 1x
