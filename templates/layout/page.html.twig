@@ -57,7 +57,7 @@
 
   {{ page.help }}
 
-  {{ top }}
+  {{ page.top }}
 
   <main role="main">
     <a id="main-content" tabindex="-1"></a>{# link is in html.html.twig #}
@@ -80,7 +80,7 @@
 
   </main>
 
-  {{ bottom }}
+  {{ page.bottom }}
 
   {% if page.footer %}
     <footer role="contentinfo">
@@ -90,4 +90,4 @@
 
 </div>{# /.layout-container #}
 
-{{ admin }}
+{{ page.admin }}
