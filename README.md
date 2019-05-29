@@ -88,13 +88,14 @@ and place the compiled js files to `dist` directory.
 ### Vendor libraries
 
 If you need a third party css/sass/js library and you want use it as library
-(don't merge it our src files): install it with npm to `node_modules`, then
-just run the `copyVendorsTask` from gulp.js. (It's part of default/start and
-prod  tasks too.) It will be search dist version of library and copy it to
-`vendors` directory.
+(instead of merging it into your src files): install it with npm to
+`node_modules`, then just run the `copyVendorsTask` from gulp.js. (It's part of
+`default`/`start` and `prod` tasks too.) It will search dist version of the
+library and copy it into `vendors` directory.
 For example __Font Awesome 5 Free__ library added to `dependencies` and run
-`vendors` task. You can see, it has been copied from `node_modules` to `vendors`
-directory. It's just for demonstration purposes, you can remove it.
+`vendors` task. As you can see only the needed files have been copied from
+`node_modules` to `vendors` directory. However this is just for demonstration
+purposes, you can remove it if you don't want to use.
 
 ### Drupal libraries
 
