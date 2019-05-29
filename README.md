@@ -116,6 +116,44 @@ user-profile:
     - core/drupal
 ```
 
+### Webfonts
+
+All webfonts must be imported properly. If Internet Explorer 11 and below isn't
+important and don't want to use special characters you can use Google Fonts as
+external css file. (Google Fonts only support `WOFF2` webfont format) Please
+use the Drupal library system for that:
+
+```yaml
+global-styling:
+  css:
+    base:
+      //fonts.googleapis.com/css?family=Rubik:400,400i,500,700&display=swap&subset=latin-ext: { external: true }
+```
+
+Please note here: use `display=swap` for font-display property and
+`subset=latin-ext` for extended language support.
+
+In case of Internet Explorer 11 and below is important for you, you can generate
+your own webfonts with a service like FontSquirrel into the `/fonts` directory.
+Then make them available via `@font-face` rules in a base level Sass file,
+for example in `3.base/_base.fonts.scss`:
+
+```scss
+@font-face {
+  font-family: Rubik;
+  src:
+    url("/resources/fonts/rubik-medium.woff2") format("woff2"),
+    url("/resources/fonts/rubik-medium.woff") format("woff");
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+```
+
+You may noticed, this font face declaration not placed in settings level. Here
+is why: all files in settings and tools level not produced css code, so we can
+import them to multiple files without duplicate css code creation.
+
 ### CSS Media queries and Breakpoints
 
 We don't provide any grid systems or breakpoint is SASS: you can use whatever
