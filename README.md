@@ -103,9 +103,9 @@ You have to manage you compiled CSS and JavaScript files as Drupal libraries.
 All libraries are defined in `libraries.yml` file. There is a global library:
 we will load that in all pages. But you have to create and attach different
 libraries for specified blocks / pages. For example you can create libraries for
-sliders, views, pages.
+sliders, a specific view, a single page or block.
 Don't forget to add dependencies for each libraries, and attributes for files
-like: minified, external, async... Example:
+like: `minified`, `external`, `async`... For example:
 
 ```yaml
 user-profile:
