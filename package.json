@@ -1,6 +1,6 @@
 {
   "name": "brainsum_drupal8_startertheme",
-  "version": "1.0.1",
+  "version": "1.1.0",
   "description": "Drupal 8 coding standards ready startertheme powered by Gulp 4 based on Classy.",
   "repository": {
     "type": "git",
@@ -30,24 +30,29 @@
     "twig"
   ],
   "dependencies": {
-    "@fortawesome/fontawesome-free": "^5.6.3"
+    "@glidejs/glide": "^3.3.0"
   },
   "devDependencies": {
-    "browser-sync": "^2.26.5",
-    "eslint-config-airbnb-base": "^13.1.0",
-    "gulp": "^4.0.0",
-    "gulp-autoprefixer": "^6.0.0",
+    "autoprefixer": "^9.6.1",
+    "browser-sync": "^2.26.7",
+    "eslint": "^6.2.2",
+    "eslint-config-airbnb-base": "^14.0.0",
+    "eslint-plugin-import": "^2.18.2",
+    "gulp": "^4.0.2",
+    "gulp-clean": "^0.4.0",
     "gulp-css-purge": "^3.0.9",
-    "gulp-csscomb": "^3.0.8",
-    "gulp-eslint": "^5.0.0",
-    "gulp-npm-dist": "^1.0.2",
+    "gulp-eslint": "^6.0.0",
+    "gulp-npm-dist": "^1.0.3",
+    "gulp-postcss": "^8.0.0",
     "gulp-sass": "^4.0.2",
-    "gulp-sourcemaps": "^2.6.4",
-    "gulp-stylelint": "^8.0.0",
-    "gulp-uglify": "^3.0.1",
+    "gulp-sourcemaps": "^2.6.5",
+    "gulp-split-media-queries": "^1.0.3",
+    "gulp-stylelint": "^9.0.0",
+    "gulp-uglify": "^3.0.2",
     "gulp-yaml-validate": "^1.0.2",
-    "stylelint": "^9.10.1",
-    "stylelint-config-standard": "^18.2.0",
-    "stylelint-scss": "^3.5.1"
+    "stylelint": "^10.1.0",
+    "stylelint-config-scss": "^1.0.0-security",
+    "stylelint-config-standard": "^18.3.0",
+    "stylelint-scss": "^3.10.0"
   }
 }

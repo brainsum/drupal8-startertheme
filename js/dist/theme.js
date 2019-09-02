@@ -1,1 +1,1 @@
-!function(t){"use strict";Drupal.behaviors.aThemeFunction={attach:function(){}}}(jQuery);
+"use strict";jQuery,Drupal.behaviors.starterthemeThemeFunction={attach:function(){}};

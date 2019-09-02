@@ -38,9 +38,9 @@
  *       - core/drupal
  */
 
-(function ($) {
-  'use strict';
+'use strict';
 
+(function drupalJs($) {
   Drupal.behaviors.starterthemeThemeFunction = {
     attach: function () {}
   };
