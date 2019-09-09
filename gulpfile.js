@@ -59,7 +59,10 @@ function copyVendorTask() {
  */
 function cssCleanTask() {
   return gulp
-    .src(config.paths.css, { read: false })
+    .src(config.paths.css, {
+      read: false,
+      allowEmpty: true
+    })
     .pipe(clean());
 }
 
