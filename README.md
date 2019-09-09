@@ -92,7 +92,7 @@ If you need a third party css/sass/js library and you want use it as library
 `node_modules`, then just run the `copyVendorsTask` from gulp.js. (It's part of
 `default`/`start` and `prod` tasks too.) It will search dist version of the
 library and copy it into `vendors` directory.
-For example __Font Awesome 5 Free__ library added to `dependencies` and run
+For example __Glide JS__ library added to `dependencies` and run
 `vendors` task. As you can see only the needed files have been copied from
 `node_modules` to `vendors` directory. However this is just for demonstration
 purposes, you can remove it if you don't want to use.
@@ -194,9 +194,9 @@ _Another tool_: **[CSSComb](http://csscomb.com/)**. However it's an almost dead
 project (only maintained, but no any new features in the future), only a few
 (12) rules supported (Stylelint has more than 160 + plugins), but it can autofix
 everything and sorting CSS rules.
-Recommended to run it manually before commit a Sass file. It has IDE/code editor
-plugins too. CSSComb config based on Drupal's [CSSCombx](https://github.com/drugan/csscombx)
-config, but updated to latest version and added new css properties.
+Recommended to run it manually before commit a Sass file. Use the `.csscomb.json`
+with IDE/code editor plugins. CSSComb config based on Drupal's [CSSCombx](https://github.com/drugan/csscombx) config, but updated to latest version and added new
+css properties.
 
 Currently there aren't a "perfect" tool, so there are some caveats:
 
