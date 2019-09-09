@@ -40,7 +40,7 @@
     "eslint-plugin-import": "^2.18.2",
     "gulp": "^4.0.2",
     "gulp-clean": "^0.4.0",
-    "gulp-css-purge": "^3.0.9",
+    "gulp-clean-css": "^4.2.0",
     "gulp-eslint": "^6.0.0",
     "gulp-npm-dist": "^1.0.3",
     "gulp-postcss": "^8.0.0",

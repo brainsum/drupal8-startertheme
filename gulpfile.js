@@ -2,9 +2,9 @@
 
 const browserSync       = require('browser-sync').create();
 const clean             = require('gulp-clean');
+const cleanCSS          = require('gulp-clean-css');
 const gulp              = require('gulp');
 const autoprefixer      = require('autoprefixer');
-const purge             = require('gulp-css-purge');
 const eslint            = require('gulp-eslint');
 const npmDist           = require('gulp-npm-dist');
 const postcss           = require('gulp-postcss');
@@ -109,13 +109,21 @@ function sassProdTask() {
     .pipe(splitMediaQueries({
       breakpoint: config.cssSplitting.breakpoint,
     }))
-    .pipe(
-      purge({
-        trim: true,
-        shorten: true,
-        verbose: true
-      })
-    )
+    .pipe(cleanCSS({
+      compatibility: {
+        colors: {
+          opacity: true
+        },
+        units: {
+          rem: true,
+          vh: true,
+          vm: true,
+          vmax: true,
+          vmin: true
+        }
+      },
+      level: 2
+    }))
     .pipe(gulp.dest(config.paths.css));
 }
 
