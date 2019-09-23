@@ -3,6 +3,7 @@
 const browserSync       = require('browser-sync').create();
 const clean             = require('gulp-clean');
 const cleanCSS          = require('gulp-clean-css');
+const critical          = require('drupalcritical');
 const gulp              = require('gulp');
 const autoprefixer      = require('autoprefixer');
 const eslint            = require('gulp-eslint');
@@ -35,6 +36,42 @@ const config = {
       'Google Chrome',
     ],
   },
+  critical: {
+    inline: false,
+    local: false,
+    dest: './css/',
+    extract: false,
+    ignore: [
+      '@font-face',
+      /url\(/,
+      /print/,
+      /animation/g,
+      /interpolation/g,
+      /-webkit/g,
+      /-moz/g,
+      /-ms/g,
+      /speak/g,
+      /list-style-image/g,
+      /list-style-type/g
+    ],
+    ignoreOptions: {
+      matchSelectors: true,
+      matchTypes: true,
+      matchDeclarationProperties: true,
+      matchDeclarationValues: true,
+      matchMedia: true
+    },
+    dimensions: [ // define different viewport sizes
+      {
+        height: 200,
+        width: 500
+      }, {
+        height: 900,
+        width: 1200
+      }
+    ]
+  },
+  pages: require('./critical.json') // define here page types
 };
 
 /**
@@ -150,6 +187,18 @@ function sassLintTask() {
     }));
 }
 
+
+/**
+ * Critical CSS Task
+ *
+ * Generate & Inline Critical-path CSS.
+ * @return {object} Critical CSS files for defined page types.
+ */
+gulp.task('critical', gulp.series(sassProdTask, function (done) {
+  critical.generate(config.critical, config.pages);
+  done();
+}));
+
 /**
  * JavaScript Task
  *
@@ -238,3 +287,4 @@ exports.scripts = scriptsTask;
 exports.scriptsLint = scriptsLintTask;
 exports.watch = browserSyncTask;
 exports.yamlLint = yamlLintTask;
+// critical - not need exported here, but here is to complete tasks list
