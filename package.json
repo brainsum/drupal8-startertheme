@@ -1,6 +1,6 @@
 {
   "name": "brainsum_drupal8_startertheme",
-  "version": "1.2.0",
+  "version": "1.3.0",
   "description": "Drupal 8 coding standards ready startertheme powered by Gulp 4 based on Classy.",
   "repository": {
     "type": "git",
@@ -16,8 +16,7 @@
     "sassProd": "gulp sassProd",
     "sassLint": "gulp sassLint",
     "scripts": "gulp scripts",
-    "scriptsLint": "gulp scriptsLint",
-    "yamlLint": "gulp yamlLint"
+    "scriptsLint": "gulp scriptsLint"
   },
   "keywords": [
     "drupal",
@@ -33,10 +32,10 @@
     "@glidejs/glide": "^3.3.0"
   },
   "devDependencies": {
-    "autoprefixer": "^9.6.1",
+    "autoprefixer": "^9.7.1",
     "browser-sync": "^2.26.7",
     "drupalcritical": "^1.1.1",
-    "eslint": "^6.2.2",
+    "eslint": "^6.6.0",
     "eslint-config-airbnb-base": "^14.0.0",
     "eslint-plugin-import": "^2.18.2",
     "gulp": "^4.0.2",
@@ -48,12 +47,11 @@
     "gulp-sass": "^4.0.2",
     "gulp-sourcemaps": "^2.6.5",
     "gulp-split-media-queries": "^1.0.3",
-    "gulp-stylelint": "^9.0.0",
+    "gulp-stylelint": "^10.0.0",
     "gulp-uglify": "^3.0.2",
-    "gulp-yaml-validate": "^1.0.2",
-    "stylelint": "^10.1.0",
+    "stylelint": "^11.1.1",
     "stylelint-config-scss": "^1.0.0-security",
-    "stylelint-config-standard": "^18.3.0",
-    "stylelint-scss": "^3.10.0"
+    "stylelint-config-standard": "^19.0.0",
+    "stylelint-scss": "^3.12.1"
   }
 }

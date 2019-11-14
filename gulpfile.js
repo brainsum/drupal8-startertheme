@@ -1,11 +1,11 @@
 'use strict';
 
+const autoprefixer      = require('autoprefixer');
 const browserSync       = require('browser-sync').create();
-const clean             = require('gulp-clean');
-const cleanCSS          = require('gulp-clean-css');
 const critical          = require('drupalcritical');
 const gulp              = require('gulp');
-const autoprefixer      = require('autoprefixer');
+const clean             = require('gulp-clean');
+const cleanCSS          = require('gulp-clean-css');
 const eslint            = require('gulp-eslint');
 const npmDist           = require('gulp-npm-dist');
 const postcss           = require('gulp-postcss');
@@ -14,15 +14,21 @@ const sourcemaps        = require('gulp-sourcemaps');
 const splitMediaQueries = require('gulp-split-media-queries');
 const stylelint         = require('gulp-stylelint');
 const uglify            = require('gulp-uglify');
-const yaml              = require('gulp-yaml-validate');
 
 const config = {
   paths: {
-    sass: './sass/**/*.scss',
-    css: './css/',
-    jsSrc: './js/src/*.js',
-    jsDist: './js/dist/',
-    img: './images/',
+    styles: {
+      src: './sass/**/*.scss',
+      dest: './css/',
+    },
+    scripts: {
+      src: './js/src/*.js',
+      dest: './js/dist/'
+    },
+    images: {
+      src: './images/src/*',
+      dest: './images/dist'
+    }
   },
   // Desktop/tablet media queries in a separated CSS file.
   cssSplitting: {
@@ -94,13 +100,14 @@ function copyVendorTask() {
  * avoid duplicated and conflicted CSS rules.
  * @return {object} empty directory
  */
-function cssCleanTask() {
-  return gulp
-    .src(config.paths.css, {
+function cssCleanTask(done) {
+  gulp
+    .src(config.paths.styles.dest, {
       read: false,
       allowEmpty: true
     })
     .pipe(clean());
+  done();
 }
 
 /**
@@ -109,18 +116,22 @@ function cssCleanTask() {
  * Sass task for development with live injecting into all browsers
  * @return {object} Autoprefixed CSS files with expanded style and sourcemaps.
  */
-function sassDevTask() {
+function sassDevTask(done) {
   return gulp
-    .src(config.paths.sass)
+    .src(config.paths.styles.src)
     .pipe(sourcemaps.init({ largeFile: true }))
-    .pipe(sass({ outputStyle: 'expanded', precision: 10 }))
+    .pipe(sass({
+      outputStyle: 'expanded',
+      precision: 10
+    }))
     .on('error', sass.logError)
     .pipe(postcss([autoprefixer()]))
     .pipe(sourcemaps.write({ includeContent: false }))
     .pipe(sourcemaps.init({ loadMaps: true }))
     .pipe(sourcemaps.write('./'))
-    .pipe(gulp.dest(config.paths.css))
+    .pipe(gulp.dest(config.paths.styles.dest))
     .pipe(browserSync.stream());
+  done();
 }
 
 /**
@@ -131,9 +142,9 @@ function sassDevTask() {
  * @return {object} Autoprefixed, minified, ordered and linted* CSS files without
  * sourcemaps.
  */
-function sassProdTask() {
-  return gulp
-    .src(config.paths.sass)
+function sassProdTask(done) {
+  gulp
+    .src(config.paths.styles.src)
     .pipe(stylelint({
       fix: true,
       reporters: [
@@ -143,7 +154,10 @@ function sassProdTask() {
         },
       ],
     }))
-    .pipe(sass({ outputStyle: 'compact', precision: 10 }))
+    .pipe(sass({
+      outputStyle: 'compact',
+      precision: 10
+    }))
     .on('error', sass.logError)
     .pipe(postcss([autoprefixer()]))
     .pipe(splitMediaQueries({
@@ -164,7 +178,8 @@ function sassProdTask() {
       },
       level: 2
     }))
-    .pipe(gulp.dest(config.paths.css));
+    .pipe(gulp.dest(config.paths.styles.dest));
+  done();
 }
 
 /**
@@ -173,8 +188,8 @@ function sassProdTask() {
  * @return {object} Linted version of SASS (auto fixable) and warnings printed to
  * console.
  */
-function sassLintTask() {
-  return gulp
+function sassLintTask(done) {
+  gulp
     .src(config.paths.sass)
     .pipe(stylelint({
       fix: true,
@@ -185,6 +200,7 @@ function sassLintTask() {
         },
       ],
     }));
+  done();
 }
 
 
@@ -194,7 +210,7 @@ function sassLintTask() {
  * Generate & Inline Critical-path CSS.
  * @return {object} Critical CSS files for defined page types.
  */
-gulp.task('critical', gulp.series(sassProdTask, function (done) {
+gulp.task('critical', gulp.series(sassProdTask, function criticalFn(done) {
   critical.generate(config.critical, config.pages);
   done();
 }));
@@ -206,15 +222,16 @@ gulp.task('critical', gulp.series(sassProdTask, function (done) {
  * @return {object} Linted (auto fixable, warnings printed to console about
  * others) and minified JavaScript files.
 */
-function scriptsTask() {
-  return gulp
-    .src(config.paths.jsSrc)
+function scriptsTask(done) {
+  gulp
+    .src(config.paths.scripts.src)
     .pipe(eslint({ fix: true }))
     .pipe(eslint.format())
     .pipe(eslint.failAfterError())
     .pipe(uglify())
-    .pipe(gulp.dest(config.paths.jsDist))
+    .pipe(gulp.dest(config.paths.scripts.dest))
     .pipe(browserSync.stream());
+  done();
 }
 
 /**
@@ -223,23 +240,13 @@ function scriptsTask() {
  * @return {object} Linted (auto fixable, warnings printed to console about
  * others) JavaScript files.
 */
-function scriptsLintTask() {
-  return gulp
-    .src(config.paths.jsSrc)
+function scriptsLintTask(done) {
+  gulp
+    .src(config.paths.scripts.src)
     .pipe(eslint({ fix: true }))
     .pipe(eslint.format())
     .pipe(eslint.failAfterError());
-}
-
-/**
- * YAML:Linting Task
- *
- * @return {object} Linted YAML config files.
- */
-function yamlLintTask() {
-  return gulp
-    .src('./*.yml')
-    .pipe(yaml({ safe: true }));
+  done();
 }
 
 /**
@@ -255,8 +262,8 @@ function browserSyncTask(done) {
     open: config.browserSync.autoOpen,
     browser: config.browserSync.browsers,
   });
-  gulp.watch(config.paths.sass, sassDevTask);
-  gulp.watch(config.paths.jsSrc, scriptsTask);
+  gulp.watch(config.paths.styles.src, sassDevTask);
+  gulp.watch(config.paths.scripts.src, scriptsTask);
   done();
 }
 
@@ -272,13 +279,13 @@ function browserSyncReloadTask(done) {
 }
 
 // Define complex tasks
-var compileTask = gulp.parallel(sassDevTask, scriptsTask);
-var compileProdTask = gulp.parallel(sassProdTask, scriptsTask);
+const compileTask = gulp.parallel(sassDevTask, scriptsTask);
+const compileProdTask = gulp.parallel(sassProdTask, scriptsTask);
 
 // export tasks
 exports.default = gulp.series(copyVendorTask, cssCleanTask, compileTask, browserSyncTask);
 exports.prod = gulp.series(copyVendorTask, cssCleanTask, compileProdTask);
-exports.lint = gulp.parallel(sassLintTask, scriptsLintTask, yamlLintTask);
+exports.lint = gulp.parallel(sassLintTask, scriptsLintTask);
 exports.vendors = copyVendorTask;
 exports.sassDev = sassDevTask;
 exports.sassProd = sassProdTask;
@@ -286,5 +293,4 @@ exports.sassLint = sassLintTask;
 exports.scripts = scriptsTask;
 exports.scriptsLint = scriptsLintTask;
 exports.watch = browserSyncTask;
-exports.yamlLint = yamlLintTask;
 // critical - not need exported here, but here is to complete tasks list
