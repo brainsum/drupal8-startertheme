@@ -2,7 +2,7 @@
 
 * Created by: [Krisztian Pinter](kpinter@brainsum.com)
 * Created in: 2019.
-* Updated on: 2019.04.26.
+* Updated on: 2019.11.14.
 
 ## Table of Contents
 
@@ -47,7 +47,8 @@ scripts # run scripts task; no watch, BrowserSync in this way
 ```
 
 In Gulp.js there is some extra tasks too. **Before you can run a BrowserSync
-task, you need to edit `proxy` setting in `browserSyncTask`!**
+task (ex. `start` one), you need to edit `proxy` setting in the `browserSync`
+config!**
 
 ## Structure
 
@@ -87,11 +88,12 @@ and place the compiled js files to `dist` directory.
 
 ### Vendor libraries
 
-If you need a third party css/sass/js library and you want use it as library
-(instead of merging it into your src files): install it with npm to
-`node_modules`, then just run the `copyVendorsTask` from gulp.js. (It's part of
-`default`/`start` and `prod` tasks too.) It will search dist version of the
-library and copy it into `vendors` directory.
+Because we don't use ES6 features, js bundlers, if you need a third party
+css/sass/js library and you want use it as library (instead of merging it into
+your src files): install it with npm to `node_modules`, then just run the
+`copyVendorsTask` from gulp.js. (It's part of `default`/`start` and `prod` tasks
+too.) It will search dist version of the library and copy it into `vendors`
+directory.
 For example __Glide JS__ library added to `dependencies` and run
 `vendors` task. As you can see only the needed files have been copied from
 `node_modules` to `vendors` directory. However this is just for demonstration
@@ -104,14 +106,20 @@ All libraries are defined in `libraries.yml` file. There is a global library:
 we will load that in all pages. But you have to create and attach different
 libraries for specified blocks / pages. For example you can create libraries for
 sliders, a specific view, a single page or block.
+
 Don't forget to add dependencies for each libraries, and attributes for files
-like: `minified`, `external`, `async`... For example:
+like: `minified`, `external`, `async` and so on.
+
+Furthere more we don't want to be aggregated these libraries by Drupal, so you
+will need to add `{preprocess: false}` too.
+
+Example for them:
 
 ```yaml
 user-profile:
   js:
-    //platform.twitter.com/widgets.js: { type: external, attributes: { async: true } }
-    js/dist/user-profile.js: { minified: true }
+    //platform.twitter.com/widgets.js: { type: external, preprocess: false, attributes: { async: true } }
+    js/dist/user-profile.js: { minified: true, preprocess: false }
   dependencies:
     - core/jquery
     - core/drupal
@@ -143,8 +151,8 @@ for example in `3.base/_base.fonts.scss`:
 @font-face {
   font-family: Rubik;
   src:
-    url("/resources/fonts/rubik-medium.woff2") format("woff2"),
-    url("/resources/fonts/rubik-medium.woff") format("woff");
+    url("/fonts/rubik-medium.woff2") format("woff2"),
+    url("/fonts/rubik-medium.woff") format("woff");
   font-weight: 500;
   font-style: normal;
   font-display: swap;
@@ -162,6 +170,29 @@ you want. But there is a default `breakpoints.yml` file, where are some
 predefined breakpoints for Drupal. You have to keep it in sync with your
 actually breakpoints in SASS. (This file is only a placeholder/template file,
 for easier start.)
+
+### 3rd Party SASS libraries
+
+If you need some external SASS files to generate your CSS, you can import them
+from node_modules via gulp.js. For example if you want use Foundation for Sites
+as your breakpoint and grid system, add the following paths to the Sass Gulp
+tasks:
+
+```js
+function sassDevTask(done) {
+  gulp
+    [...]
+    .pipe(sass({
+      [...]
+      includePaths: [
+        'node_modules/foundation-sites/scss/',
+        'node_modules/foundation-sites/_vendor/sassy-lists/stylesheets'
+      ]
+    }))
+    [...];
+  done();
+}
+```
 
 ## Coding Standards
 
