@@ -32,3 +32,16 @@
 @import "5.components/components.navigation";
 @import "5.components/components.search";
 @import "5.components/components.typography";
+
+/**
+ * Utilities
+ *
+ * Utilities and helper classes with ability to override anything which goes
+ * before in the triangle, eg. hide helper class.
+ * They are usually one line of code and have !important to make sure they
+ * override all element styles when used.
+ */
+
+@import "6.utilities/_utilities.stretched-link";
+@import "6.utilities/utilities.text";
+@import "6.utilities/utilities.visibility";

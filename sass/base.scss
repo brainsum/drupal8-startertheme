@@ -29,4 +29,6 @@
  *
  * This is the first layer which generates actual CSS.
  */
+// CSS custom property turned off by default
+// @import "3.base/_base.css-settings";
 @import "3.base/base.typography";
