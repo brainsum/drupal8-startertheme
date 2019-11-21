@@ -2,7 +2,7 @@
  * @file
  * Attaches behaviors for startertheme.
  *
- * Please use `context` paramater and/or .one() Drupal's jQuery function if
+ * Please use `context` parameter and/or .one() Drupal's jQuery function if
  * you don't want to run a behavior on each page reload.
  *
  * @see https://www.lullabot.com/articles/understanding-javascript-behaviors-in-drupal
@@ -26,7 +26,7 @@
  *     });
  *   };
  *
- * Important! If you use jQuery, Drupal behaviors or `.once()` function,
+ * IMPORTANT! If you use jQuery, Drupal behaviors or `.once()` function,
  * don't forget to add them to Drupal library as dependencies:
  *
  * @example
@@ -41,7 +41,7 @@
 'use strict';
 
 (function drupalJs($) {
-  Drupal.behaviors.starterthemeThemeFunction = {
+  Drupal.behaviors.astarterthemeThemeFunction = {
     attach: function () {}
   };
 })(jQuery);

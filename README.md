@@ -2,7 +2,7 @@
 
 * Created by: [Krisztian Pinter](kpinter@brainsum.com)
 * Created in: 2019.
-* Updated on: 2019.11.14.
+* Updated on: 2019.11.21.
 
 ## Table of Contents
 
@@ -233,7 +233,7 @@ Currently there aren't a "perfect" tool, so there are some caveats:
 
 * **stylelint-no-browser-hacks** _Stylelint plugin_ has been removed because it
   has incompatibility issue with Sass variables (originally its developed for
-  vanilla CSS, Sass linting only with plugin).
+  vanilla CSS, Sass linting is provided only by a plugin).
 
 * **no-unknown-animations** _Stylelint rule_ has been removed because it's not
   support Sass `@mixin`, `@import` rules (they must be same file and same level).

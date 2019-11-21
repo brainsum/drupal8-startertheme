@@ -1,20 +1,37 @@
 'use strict';
 
-const autoprefixer      = require('autoprefixer');
-const browserSync       = require('browser-sync').create();
-const critical          = require('drupalcritical');
-const gulp              = require('gulp');
-const clean             = require('gulp-clean');
-const cleanCSS          = require('gulp-clean-css');
-const eslint            = require('gulp-eslint');
-const npmDist           = require('gulp-npm-dist');
-const postcss           = require('gulp-postcss');
-const sass              = require('gulp-sass');
-const sourcemaps        = require('gulp-sourcemaps');
-const splitMediaQueries = require('gulp-split-media-queries');
-const stylelint         = require('gulp-stylelint');
-const uglify            = require('gulp-uglify');
+/**
+ * Import required node modules
+ */
+const autoprefixer        = require('autoprefixer');
+const browserSync         = require('browser-sync').create();
+const critical            = require('drupalcritical');
+const Fiber               = require('fibers');
+const gulp                = require('gulp');
+const clean               = require('gulp-clean');
+const cleanCSS            = require('gulp-clean-css');
+const eslint              = require('gulp-eslint');
+const npmDist             = require('gulp-npm-dist');
+const postcss             = require('gulp-postcss');
+const sass                = require('gulp-sass');
+const sourcemaps          = require('gulp-sourcemaps');
+const splitMediaQueries   = require('gulp-split-media-queries');
+const stylelint           = require('gulp-stylelint');
+const uglify              = require('gulp-uglify');
+const customProperties    = require('postcss-custom-properties');
 
+/**
+ * Sass settings
+ *
+ * Set Sass compiler. There are two options:
+ * - require('sass') for Dart Sass
+ * - require('node-sass') for Node Sass (LibSass)
+ */
+sass.compiler             = require('sass');
+
+/**
+ * Gulp config
+ */
 const config = {
   paths: {
     styles: {
@@ -121,11 +138,15 @@ function sassDevTask(done) {
     .src(config.paths.styles.src)
     .pipe(sourcemaps.init({ largeFile: true }))
     .pipe(sass({
+      fiber: Fiber,
       outputStyle: 'expanded',
       precision: 10
     }))
     .on('error', sass.logError)
-    .pipe(postcss([autoprefixer()]))
+    .pipe(postcss([
+      customProperties(),
+      autoprefixer()
+    ]))
     .pipe(sourcemaps.write({ includeContent: false }))
     .pipe(sourcemaps.init({ loadMaps: true }))
     .pipe(sourcemaps.write('./'))
@@ -155,11 +176,14 @@ function sassProdTask(done) {
       ],
     }))
     .pipe(sass({
-      outputStyle: 'compact',
+      fiber: Fiber,
       precision: 10
     }))
     .on('error', sass.logError)
-    .pipe(postcss([autoprefixer()]))
+    .pipe(postcss([
+      customProperties(),
+      autoprefixer()
+    ]))
     .pipe(splitMediaQueries({
       breakpoint: config.cssSplitting.breakpoint,
     }))
@@ -176,7 +200,7 @@ function sassProdTask(done) {
           vmin: true
         }
       },
-      level: 2
+      level: 1
     }))
     .pipe(gulp.dest(config.paths.styles.dest));
   done();
