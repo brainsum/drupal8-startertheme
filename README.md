@@ -110,7 +110,7 @@ sliders, a specific view, a single page or block.
 Don't forget to add dependencies for each libraries, and attributes for files
 like: `minified`, `external`, `async` and so on.
 
-Furthere more we don't want to be aggregated these libraries by Drupal, so you
+Further more we don't want to be aggregated these libraries by Drupal, so you
 will need to add `{preprocess: false}` too.
 
 Example for them:
