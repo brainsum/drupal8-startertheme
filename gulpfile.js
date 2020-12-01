@@ -11,7 +11,6 @@ const gulp                = require('gulp');
 const clean               = require('gulp-clean');
 const cleanCSS            = require('gulp-clean-css');
 const eslint              = require('gulp-eslint');
-const npmDist             = require('gulp-npm-dist');
 const postcss             = require('gulp-postcss');
 const sass                = require('gulp-sass');
 const sourcemaps          = require('gulp-sourcemaps');
@@ -96,19 +95,6 @@ const config = {
   },
   pages: require('./critical.json') // define here page types
 };
-
-/**
- * Copy:dependencies Task
- *
- * from npm_modules to ./public/vendors/
- * @see https://github.com/dshemendiuk/gulp-npm-dist
- * @return {object} Copied distributed version of vendor assets.
- */
-function copyVendorTask() {
-  return gulp
-    .src(npmDist(), { base: './node_modules' })
-    .pipe(gulp.dest('./vendors/'));
-}
 
 /**
  * CSS: Cleaning Task
@@ -307,10 +293,9 @@ const compileTask = gulp.parallel(sassDevTask, scriptsTask);
 const compileProdTask = gulp.parallel(sassProdTask, scriptsTask);
 
 // export tasks
-exports.default = gulp.series(copyVendorTask, cssCleanTask, compileTask, browserSyncTask);
-exports.prod = gulp.series(copyVendorTask, cssCleanTask, compileProdTask);
+exports.default = gulp.series(cssCleanTask, compileTask, browserSyncTask);
+exports.prod = gulp.series(cssCleanTask, compileProdTask);
 exports.lint = gulp.parallel(sassLintTask, scriptsLintTask);
-exports.vendors = copyVendorTask;
 exports.sassDev = sassDevTask;
 exports.sassProd = sassProdTask;
 exports.sassLint = sassLintTask;

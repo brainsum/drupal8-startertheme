@@ -2,11 +2,12 @@
 
 * Created by: [Krisztian Pinter](kpinter@brainsum.com)
 * Created in: 2019.
-* Updated on: 2019.11.21.
+* Updated on: 2020.12.01.
 
-## Table of Contents
+## Table of Contents
 
 * About
+* What will you need to work with this theme?
 * Installation
 * Usage
 * Structure
@@ -18,6 +19,15 @@ Drupal 8 startertheme based on core's Classy base theme. Build process powered
 by [Gulp.js 4](https://gulpjs.com/docs/en/getting-started/quick-start) and asset
 files (sass, css, js) structured, linted and compiled according to Drupal Coding
 Standards. You can equally run build processes by gulp commands or npm scripts.
+
+## What will you need to work with this theme?
+
+* Installed Composer
+* Installed Drush
+* Installed Drupal 8-9 via Composer
+* Set asset-packagist to composer.json
+* Installed node.js (min. v13)
+* Installed npm
 
 ## Installation
 
@@ -62,7 +72,6 @@ Theme's structure based on Drupal 8 coding standards and theme recommendations:
 libraries here
 * `sass` directory: Source sass files
 * `templates` directory: all twig templates in Drupal module based structure
-* `vendors` directory: all production needed vendor libraries used from here
 
 ### Sass structure
 
@@ -86,18 +95,38 @@ needs.
 Our all JavaScript files will go to `js` directory. We work from `src` directory
 and place the compiled js files to `dist` directory.
 
-### Vendor libraries
+### Third party assets
 
-Because we don't use ES6 features, js bundlers, if you need a third party
-css/sass/js library and you want use it as library (instead of merging it into
-your src files): install it with npm to `node_modules`, then just run the
-`copyVendorsTask` from gulp.js. (It's part of `default`/`start` and `prod` tasks
-too.) It will search dist version of the library and copy it into `vendors`
-directory.
-For example __Glide JS__ library added to `dependencies` and run
-`vendors` task. As you can see only the needed files have been copied from
-`node_modules` to `vendors` directory. However this is just for demonstration
-purposes, you can remove it if you don't want to use.
+If you need to install any third party library please install that via composer
+and attach as a library. For example, if you want to install
+[Lity](https://sorgalla.com/lity/) as lightbox:
+
+Search for in Asset Packagist repository: https://asset-packagist.org/. If you
+find that, you will see it's an npm or bower package, then install them via
+Composer:
+
+```shell script
+composer require npm-asset/lity
+```
+
+It will install all assets into `libraries/` directory, so we can add it
+very easily into a library:
+
+```yaml
+lightbox:
+  version: 2.4.1
+  remote: https://github.com/jsor/lity
+  license:
+    name: MIT
+    url: https://github.com/jsor/lity/blob/master/LICENSE
+    gpl-compatible: true
+  css:
+    theme:
+      /libraries/lity/dist/lity.min.css: { minified: true }
+  js:
+    /libraries/lity/dist/lity.min.js: { minified: true }
+```
+
 
 ### Drupal libraries
 
