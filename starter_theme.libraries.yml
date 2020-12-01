@@ -2,15 +2,11 @@ global-styling:
   css:
     base:
       css/base.css: {}
-      css/base-above-48.css: {media: '(min-width: 48em)'}
     layout:
       css/layout.css: {}
-      css/layout-above-48.css: {media: '(min-width: 48em)'}
     component:
       css/components.css: {}
-      css/components-above-48.css: {media: '(min-width: 48em)'}
     theme:
       css/theme.css: {}
-      css/theme-above-48.css: {media: '(min-width: 48em)'}
   js:
     js/dist/theme.js: {}

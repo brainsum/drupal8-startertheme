@@ -3,18 +3,16 @@
 /**
  * Import required node modules
  */
-const autoprefixer        = require('autoprefixer');
+const autoprefixer         = require('autoprefixer');
 const browserSync         = require('browser-sync').create();
 const critical            = require('drupalcritical');
 const Fiber               = require('fibers');
 const gulp                = require('gulp');
-const clean               = require('gulp-clean');
 const cleanCSS            = require('gulp-clean-css');
 const eslint              = require('gulp-eslint');
 const postcss             = require('gulp-postcss');
 const sass                = require('gulp-sass');
 const sourcemaps          = require('gulp-sourcemaps');
-const splitMediaQueries   = require('gulp-split-media-queries');
 const stylelint           = require('gulp-stylelint');
 const uglify              = require('gulp-uglify');
 const customProperties    = require('postcss-custom-properties');
@@ -45,11 +43,6 @@ const config = {
       src: './images/src/*',
       dest: './images/dist'
     }
-  },
-  // Desktop/tablet media queries in a separated CSS file.
-  cssSplitting: {
-    // If you change this, change it in libraries.yaml too!
-    breakpoint: 48, // 768px and above (from your mqs, here we use in ems)
   },
   browserSync: {
     proxy: 'projectname.test',
@@ -95,23 +88,6 @@ const config = {
   },
   pages: require('./critical.json') // define here page types
 };
-
-/**
- * CSS: Cleaning Task
- *
- * Remove all compiled CSS file to make a clean start before Sass tasks and
- * avoid duplicated and conflicted CSS rules.
- * @return {object} empty directory
- */
-function cssCleanTask(done) {
-  gulp
-    .src(config.paths.styles.dest, {
-      read: false,
-      allowEmpty: true
-    })
-    .pipe(clean());
-  done();
-}
 
 /**
  * SASS:Development Task
@@ -170,9 +146,6 @@ function sassProdTask(done) {
       customProperties(),
       autoprefixer()
     ]))
-    .pipe(splitMediaQueries({
-      breakpoint: config.cssSplitting.breakpoint,
-    }))
     .pipe(cleanCSS({
       compatibility: {
         colors: {
@@ -293,8 +266,8 @@ const compileTask = gulp.parallel(sassDevTask, scriptsTask);
 const compileProdTask = gulp.parallel(sassProdTask, scriptsTask);
 
 // export tasks
-exports.default = gulp.series(cssCleanTask, compileTask, browserSyncTask);
-exports.prod = gulp.series(cssCleanTask, compileProdTask);
+exports.default = gulp.series(compileTask, browserSyncTask);
+exports.prod = compileProdTask;
 exports.lint = gulp.parallel(sassLintTask, scriptsLintTask);
 exports.sassDev = sassDevTask;
 exports.sassProd = sassProdTask;
