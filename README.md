@@ -2,7 +2,7 @@
 
 * Created by: [Krisztian Pinter](kpinter@brainsum.com)
 * Created in: 2019.
-* Updated on: 2020.12.01.
+* Updated on: 2020.12.02.
 
 ## Table of Contents
 
@@ -48,10 +48,8 @@ gulp, like `gulp sassDev` or with package.json's scripts: `npm start` or
 `npm run start`. In both you can choose from the following tasks:
 
 ```bash
-start # run development version sass, scripts then watch and BrowserSync
-prod # run production version sass and scripts. You must run it before commit
-sassDev # run development version sass; no watch, BrowserSync in this way
-sassProd # run production version sass
+start # run sass, scripts then watch and BrowserSync
+sass # run sass; no watch, BrowserSync in this way
 sassLint # Linting sass files
 scripts # run scripts task; no watch, BrowserSync in this way
 ```
@@ -126,7 +124,6 @@ lightbox:
   js:
     /libraries/lity/dist/lity.min.js: { minified: true }
 ```
-
 
 ### Drupal libraries
 

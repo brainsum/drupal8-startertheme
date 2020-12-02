@@ -95,9 +95,18 @@ const config = {
  * Sass task for development with live injecting into all browsers
  * @return {object} Autoprefixed CSS files with expanded style and sourcemaps.
  */
-function sassDevTask(done) {
+function sassCompileTask(done) {
   return gulp
     .src(config.paths.styles.src)
+    .pipe(stylelint({
+      fix: true,
+      reporters: [
+        {
+          formatter: 'verbose',
+          console: true,
+        },
+      ],
+    }))
     .pipe(sourcemaps.init({ largeFile: true }))
     .pipe(sass({
       fiber: Fiber,
@@ -118,54 +127,6 @@ function sassDevTask(done) {
 }
 
 /**
- * SASS:Production Task
- *
- * Sass task for production with linting, to be stored in Git (run before
- * commit)
- * @return {object} Autoprefixed, minified, ordered and linted* CSS files without
- * sourcemaps.
- */
-function sassProdTask(done) {
-  gulp
-    .src(config.paths.styles.src)
-    .pipe(stylelint({
-      fix: true,
-      reporters: [
-        {
-          formatter: 'verbose',
-          console: true,
-        },
-      ],
-    }))
-    .pipe(sass({
-      fiber: Fiber,
-      precision: 10
-    }))
-    .on('error', sass.logError)
-    .pipe(postcss([
-      customProperties(),
-      autoprefixer()
-    ]))
-    .pipe(cleanCSS({
-      compatibility: {
-        colors: {
-          opacity: true
-        },
-        units: {
-          rem: true,
-          vh: true,
-          vm: true,
-          vmax: true,
-          vmin: true
-        }
-      },
-      level: 1
-    }))
-    .pipe(gulp.dest(config.paths.styles.dest));
-  done();
-}
-
-/**
  * SASS:Linting Task
  *
  * @return {object} Linted version of SASS (auto fixable) and warnings printed to
@@ -173,7 +134,7 @@ function sassProdTask(done) {
  */
 function sassLintTask(done) {
   gulp
-    .src(config.paths.sass)
+    .src(config.paths.styles.src)
     .pipe(stylelint({
       fix: true,
       reporters: [
@@ -193,7 +154,7 @@ function sassLintTask(done) {
  * Generate & Inline Critical-path CSS.
  * @return {object} Critical CSS files for defined page types.
  */
-gulp.task('critical', gulp.series(sassProdTask, function criticalFn(done) {
+gulp.task('critical', gulp.series(sassCompileTask, function criticalFn(done) {
   critical.generate(config.critical, config.pages);
   done();
 }));
@@ -245,7 +206,7 @@ function browserSyncTask(done) {
     open: config.browserSync.autoOpen,
     browser: config.browserSync.browsers,
   });
-  gulp.watch(config.paths.styles.src, sassDevTask);
+  gulp.watch(config.paths.styles.src, sassCompileTask);
   gulp.watch(config.paths.scripts.src, scriptsTask);
   done();
 }
@@ -262,15 +223,12 @@ function browserSyncReloadTask(done) {
 }
 
 // Define complex tasks
-const compileTask = gulp.parallel(sassDevTask, scriptsTask);
-const compileProdTask = gulp.parallel(sassProdTask, scriptsTask);
+const compileTask = gulp.parallel(sassCompileTask, scriptsTask);
 
 // export tasks
 exports.default = gulp.series(compileTask, browserSyncTask);
-exports.prod = compileProdTask;
 exports.lint = gulp.parallel(sassLintTask, scriptsLintTask);
-exports.sassDev = sassDevTask;
-exports.sassProd = sassProdTask;
+exports.sass = sassCompileTask;
 exports.sassLint = sassLintTask;
 exports.scripts = scriptsTask;
 exports.scriptsLint = scriptsLintTask;
