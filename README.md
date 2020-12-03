@@ -248,14 +248,6 @@ plugins for all popular IDE/code editor, but also there is linting task in
 builder tool too. Some rules can be fixed via CLI, but the most need manual
 work (You will get only warning messages.).
 
-_Another tool_: **[CSSComb](http://csscomb.com/)**. However it's an almost dead
-project (only maintained, but no any new features in the future), only a few
-(12) rules supported (Stylelint has more than 160 + plugins), but it can autofix
-everything and sorting CSS rules.
-Recommended to run it manually before commit a Sass file. Use the `.csscomb.json`
-with IDE/code editor plugins. CSSComb config based on Drupal's [CSSCombx](https://github.com/drugan/csscombx) config, but updated to latest version and added new
-css properties.
-
 Currently there aren't a "perfect" tool, so there are some caveats:
 
 * **stylelint-no-browser-hacks** _Stylelint plugin_ has been removed because it
@@ -265,20 +257,8 @@ Currently there aren't a "perfect" tool, so there are some caveats:
 * **no-unknown-animations** _Stylelint rule_ has been removed because it's not
   support Sass `@mixin`, `@import` rules (they must be same file and same level).
 
-* **CSSComb** doesn't support multiline property values (after it we need
-  realign them).
-
-* **CSSComb** could fail when a file started with comment blocks (temporary need
-  to remove them, then paste back).
-
 * However **Stylelint** has sorting plugins, they can't make any changes in
-  files, only warning us for about wrong order, so we need still use CSSComb for
-  that. (Run CSSComb on a file then fix reported issues by Stylelint.)
-
-* There are some new/edge css properties what **CCSComb** currently doesn't
-  support, You must add them to `.csscomb.json` and rerun CSSComb, otherwise
-  there will be an empty newline, what will be cause an error/warning in
-  Stylelint (and css coding standard).
+  files.
 
 ### JavaScript Coding Standard
 
