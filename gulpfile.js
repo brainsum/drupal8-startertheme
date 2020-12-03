@@ -8,13 +8,11 @@ const browserSync         = require('browser-sync').create();
 const critical            = require('drupalcritical');
 const Fiber               = require('fibers');
 const gulp                = require('gulp');
-const cleanCSS            = require('gulp-clean-css');
 const eslint              = require('gulp-eslint');
 const postcss             = require('gulp-postcss');
 const sass                = require('gulp-sass');
 const sourcemaps          = require('gulp-sourcemaps');
 const stylelint           = require('gulp-stylelint');
-const uglify              = require('gulp-uglify');
 const customProperties    = require('postcss-custom-properties');
 
 /**
@@ -171,8 +169,6 @@ function scriptsTask(done) {
     .src(config.paths.scripts.src)
     .pipe(eslint({ fix: true }))
     .pipe(eslint.format())
-    .pipe(eslint.failAfterError())
-    .pipe(uglify())
     .pipe(gulp.dest(config.paths.scripts.dest))
     .pipe(browserSync.stream());
   done();

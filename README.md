@@ -2,7 +2,7 @@
 
 * Created by: [Krisztian Pinter](kpinter@brainsum.com)
 * Created in: 2019.
-* Updated on: 2020.12.02.
+* Updated on: 2020.12.03.
 
 ## Table of Contents
 
@@ -91,7 +91,8 @@ needs.
 ### JavaScripts structure
 
 Our all JavaScript files will go to `js` directory. We work from `src` directory
-and place the compiled js files to `dist` directory.
+and place the processed js files to `dist` directory. Currently we only proceed
+an ESlint checkout.
 
 ### Third party assets
 
