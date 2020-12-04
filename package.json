@@ -1,6 +1,6 @@
 {
   "name": "brainsum_drupal8_startertheme",
-  "version": "1.8.2",
+  "version": "1.8.3",
   "description": "Drupal 8 coding standards ready startertheme powered by Gulp 4 based on Classy.",
   "repository": {
     "type": "git",
@@ -27,9 +27,7 @@
     "theme",
     "twig"
   ],
-  "dependencies": {
-    "@glidejs/glide": "^3.3.0"
-  },
+  "dependencies": {},
   "devDependencies": {
     "autoprefixer": "^9.8.5",
     "browser-sync": "^2.26.10",
