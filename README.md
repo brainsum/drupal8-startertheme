@@ -2,7 +2,7 @@
 
 * Created by: [Krisztian Pinter](kpinter@brainsum.com)
 * Created in: 2019.
-* Updated on: 2020.12.03.
+* Updated on: 2020.12.04.
 
 ## Table of Contents
 
@@ -44,14 +44,20 @@ npm install
 ## Usage
 
 We use here Gulp.js 4 as task runner. You can run the gulp tasks directly with
-gulp, like `gulp sassDev` or with package.json's scripts: `npm start` or
+gulp, like `gulp sass` or with package.json's scripts: `npm start` or
 `npm run start`. In both you can choose from the following tasks:
 
 ```bash
-start # run sass, scripts then watch and BrowserSync
-sass # run sass; no watch, BrowserSync in this way
-sassLint # Linting sass files
-scripts # run scripts task; no watch, BrowserSync in this way
+# run sass, scripts then watch and BrowserSync
+start
+# run sass; no watch, BrowserSync in this way
+sass
+# Linting sass files
+sassLint
+# Complile Sass files then create critical css files.
+critical
+# run scripts task; no watch, BrowserSync in this way
+scripts
 ```
 
 In Gulp.js there is some extra tasks too. **Before you can run a BrowserSync
@@ -87,6 +93,21 @@ To theming pages and __unique__ blocks we use `theme.scss` file. All files and
 some directories are empty, just show how you should organize sass files.
 The created files mostly just samples, you can add and remove them as project
 needs.
+
+### Generate Critical CSS
+
+To ensure initial faster page loads we can generate a bunch of css only what
+user will see at first when the page loaded. Like in newspapers, that's when it's
+called 'above the the fold' too. We provided a generator tool for that. You need to
+config at first: define screen sizes in `gulpfile.js` and provide the different type of
+pages in `critical.json` file. It will run a headless Google Chrome to check the HTML,
+then generate a CSS file for them (by default into: `./templates/includes/inline/`).
+Then only one thing to do: Include them as inline CSS into `html.html.twig` Twig
+templates. Ex.:
+
+``` php
+<style>{{source('@theme_name/includes/inline/critical-css.css', ignore_missing = true)}}</style>
+```
 
 ### JavaScripts structure
 

@@ -44,7 +44,7 @@ var config = {
   critical: {
     inline: false,
     local: false,
-    dest: './css/',
+    dest: './templates/includes/inline/',
     extract: false,
     ignore: [
       '@font-face',
@@ -94,9 +94,9 @@ var compileTask = '';
 sass.compiler = require('sass');
 
 /**
- * SASS:Development Task
+ * SASS:Compile Task
  *
- * Sass task for development with live injecting into all browsers
+ * The all-in-one Sass task for compiling, linting sass files with live injecting into all browsers
  * @param {string} done The done argument is passed into the callback function;
  * executing that done function tells Gulp "a hint to tell it when the task is done".
  */
@@ -157,12 +157,13 @@ function sassLintTask(done) {
  * Critical CSS Task
  *
  * Generate & Inline Critical-path CSS.
- * @return {object} Critical CSS files for defined page types.
+ * @param {string} done The done argument is passed into the callback function;
+ * executing that done function tells Gulp "a hint to tell it when the task is done".
  */
-gulp.task('critical', gulp.series(sassCompileTask, function criticalFn(done) {
+function criticalTask(done) {
   critical.generate(config.critical, config.pages);
   done();
-}));
+}
 
 /**
  * JavaScript Task
@@ -223,4 +224,4 @@ exports.sass = sassCompileTask;
 exports.sassLint = sassLintTask;
 exports.scripts = scriptsTask;
 exports.watch = browserSyncTask;
-// critical - not need exported here, but here is to complete tasks list
+exports.critical = gulp.series(sassCompileTask, criticalTask);
