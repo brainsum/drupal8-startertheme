@@ -98,12 +98,14 @@ needs.
 
 To ensure initial faster page loads we can generate a bunch of css only what
 user will see at first when the page loaded. Like in newspapers, that's when it's
-called 'above the the fold' too. We provided a generator tool for that. You need to
-config at first: define screen sizes in `gulpfile.js` and provide the different type of
-pages in `critical.json` file. It will run a headless Google Chrome to check the HTML,
-then generate a CSS file for them (by default into: `./templates/includes/inline/`).
-Then only one thing to do: Include them as inline CSS into `html.html.twig` Twig
-templates. Ex.:
+called 'above the the fold' too. See more about Critical CSS in
+[Web Dev](https://web.dev/extract-critical-css/). We provided a generator tool for
+that. You need to config at first: define screen sizes in `gulpfile.js` and provide the
+different type of pages in `critical.json` file. It will run a headless Google Chrome
+to check the HTML, then generate a CSS file for them (by default into:
+`./templates/includes/inline/`).
+**Then You only one thing have to do: Include them as inline CSS into `html.html.twig`
+Twig templates.** Ex.:
 
 ``` php
 <style>{{source('@theme_name/includes/inline/critical-css.css', ignore_missing = true)}}</style>
