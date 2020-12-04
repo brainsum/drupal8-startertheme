@@ -1,6 +1,6 @@
 {
   "name": "brainsum_drupal8_startertheme",
-  "version": "1.8.1",
+  "version": "1.8.2",
   "description": "Drupal 8 coding standards ready startertheme powered by Gulp 4 based on Classy.",
   "repository": {
     "type": "git",
@@ -15,7 +15,6 @@
     "sass": "gulp sass",
     "sassLint": "gulp sassLint",
     "scripts": "gulp scripts",
-    "scriptsLint": "gulp scriptsLint",
     "preinstall": "npx npm-force-resolutions"
   },
   "keywords": [

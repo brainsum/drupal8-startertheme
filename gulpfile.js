@@ -1,37 +1,29 @@
 'use strict';
 
 /**
- * Import required node modules
+ * Import required node modules and other external files
  */
-const autoprefixer         = require('autoprefixer');
-const browserSync         = require('browser-sync').create();
-const critical            = require('drupalcritical');
-const Fiber               = require('fibers');
-const gulp                = require('gulp');
-const eslint              = require('gulp-eslint');
-const postcss             = require('gulp-postcss');
-const sass                = require('gulp-sass');
-const sourcemaps          = require('gulp-sourcemaps');
-const stylelint           = require('gulp-stylelint');
-const customProperties    = require('postcss-custom-properties');
-
-/**
- * Sass settings
- *
- * Set Sass compiler. There are two options:
- * - require('sass') for Dart Sass
- * - require('node-sass') for Node Sass (LibSass)
- */
-sass.compiler             = require('sass');
+var autoprefixer         = require('autoprefixer');
+var browserSync         = require('browser-sync').create();
+var critical            = require('drupalcritical');
+var Fiber               = require('fibers');
+var gulp                = require('gulp');
+var eslint              = require('gulp-eslint');
+var postcss             = require('gulp-postcss');
+var sass                = require('gulp-sass');
+var sourcemaps          = require('gulp-sourcemaps');
+var stylelint           = require('gulp-stylelint');
+var customProperties    = require('postcss-custom-properties');
+var criticalConfig       = require('./critical.json');
 
 /**
  * Gulp config
  */
-const config = {
+var config = {
   paths: {
     styles: {
       src: './sass/**/*.scss',
-      dest: './css/',
+      dest: './css/'
     },
     scripts: {
       src: './js/src/*.js',
@@ -46,8 +38,8 @@ const config = {
     proxy: 'projectname.test',
     autoOpen: false,
     browsers: [
-      'Google Chrome',
-    ],
+      'Google Chrome'
+    ]
   },
   critical: {
     inline: false,
@@ -74,7 +66,8 @@ const config = {
       matchDeclarationValues: true,
       matchMedia: true
     },
-    dimensions: [ // define different viewport sizes
+    // define different viewport sizes
+    dimensions: [
       {
         height: 200,
         width: 500
@@ -84,26 +77,40 @@ const config = {
       }
     ]
   },
-  pages: require('./critical.json') // define here page types
+  // define here page types
+  pages: criticalConfig
 };
+
+// Predefined complex Gulp tasks
+var compileTask = '';
+
+/**
+ * Sass settings
+ *
+ * Set Sass compiler. There are two options:
+ * - require('sass') for Dart Sass
+ * - require('node-sass') for Node Sass (LibSass)
+ */
+sass.compiler = require('sass');
 
 /**
  * SASS:Development Task
  *
  * Sass task for development with live injecting into all browsers
- * @return {object} Autoprefixed CSS files with expanded style and sourcemaps.
+ * @param {string} done The done argument is passed into the callback function;
+ * executing that done function tells Gulp "a hint to tell it when the task is done".
  */
 function sassCompileTask(done) {
-  return gulp
+  gulp
     .src(config.paths.styles.src)
     .pipe(stylelint({
       fix: true,
       reporters: [
         {
           formatter: 'verbose',
-          console: true,
-        },
-      ],
+          console: true
+        }
+      ]
     }))
     .pipe(sourcemaps.init({ largeFile: true }))
     .pipe(sass({
@@ -127,8 +134,9 @@ function sassCompileTask(done) {
 /**
  * SASS:Linting Task
  *
- * @return {object} Linted version of SASS (auto fixable) and warnings printed to
- * console.
+ * Run only StyleLint task to check errors.
+ * @param {string} done The done argument is passed into the callback function;
+ * executing that done function tells Gulp "a hint to tell it when the task is done".
  */
 function sassLintTask(done) {
   gulp
@@ -138,13 +146,12 @@ function sassLintTask(done) {
       reporters: [
         {
           formatter: 'verbose',
-          console: true,
-        },
-      ],
+          console: true
+        }
+      ]
     }));
   done();
 }
-
 
 /**
  * Critical CSS Task
@@ -161,8 +168,9 @@ gulp.task('critical', gulp.series(sassCompileTask, function criticalFn(done) {
  * JavaScript Task
  *
  * Currently there is only one JavaScript task (no separated for dev and prod).
- * @return {object} Linted (auto fixable, warnings printed to console about
- * others) and minified JavaScript files.
+ * And only run ESlint to detect errors.
+ * @param {string} done The done argument is passed into the callback function;
+ * executing that done function tells Gulp "a hint to tell it when the task is done".
 */
 function scriptsTask(done) {
   gulp
@@ -175,32 +183,17 @@ function scriptsTask(done) {
 }
 
 /**
- * JavaScript:Linting Task
- *
- * @return {object} Linted (auto fixable, warnings printed to console about
- * others) JavaScript files.
-*/
-function scriptsLintTask(done) {
-  gulp
-    .src(config.paths.scripts.src)
-    .pipe(eslint({ fix: true }))
-    .pipe(eslint.format())
-    .pipe(eslint.failAfterError());
-  done();
-}
-
-/**
  * BrowserSync Task
  *
  * Watching Sass and JavaScript source files for changes.
- * @prop {string} proxy Change it for your local setup.
- * @param {function} done Changed event.
+ * @param {string} done The done argument is passed into the callback function;
+ * executing that done function tells Gulp "a hint to tell it when the task is done".
  */
 function browserSyncTask(done) {
   browserSync.init({
     proxy: config.browserSync.proxy,
     open: config.browserSync.autoOpen,
-    browser: config.browserSync.browsers,
+    browser: config.browserSync.browsers
   });
   gulp.watch(config.paths.styles.src, sassCompileTask);
   gulp.watch(config.paths.scripts.src, scriptsTask);
@@ -219,14 +212,15 @@ function browserSyncReloadTask(done) {
 }
 
 // Define complex tasks
-const compileTask = gulp.parallel(sassCompileTask, scriptsTask);
+compileTask = gulp.parallel(sassCompileTask, scriptsTask);
 
-// export tasks
+/**
+ * Export Gulp tasks
+*/
 exports.default = gulp.series(compileTask, browserSyncTask);
-exports.lint = gulp.parallel(sassLintTask, scriptsLintTask);
+exports.lint = gulp.parallel(sassLintTask, scriptsTask);
 exports.sass = sassCompileTask;
 exports.sassLint = sassLintTask;
 exports.scripts = scriptsTask;
-exports.scriptsLint = scriptsLintTask;
 exports.watch = browserSyncTask;
 // critical - not need exported here, but here is to complete tasks list
