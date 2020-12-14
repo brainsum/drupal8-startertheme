@@ -67,8 +67,9 @@ it's `starter_theme`. After you choose your theme name, rename
 * `theme_root` variable in `font-face*.scss` files
 * library name in library attaches in twigs: `field--text-long`, `form`, `html`,
   `status-messages`, `menu-local-tasks`
-* includes in twigs: `html`
-* usage comment in `icon` macro twig file
+* includes in twigs: `html`,
+* `starter_theme_path` in `includes/preload` twig,
+* usage comment in `icon` macro twig file,
 * usage comment in `base.global.js` file
 
 You need at least v13. nodejs for this theme. You can use nvm for that:
