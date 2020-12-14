@@ -32,7 +32,7 @@ is also incorporated witch is a ITCSS- and BEMit-based Sass-only framework.
 * Installed Composer
 * Installed Drush
 * Installed Drupal 8-9 via Composer
-* Set asset-packagist to composer.json of Drupal
+* [Set asset-packagist to composer.json](https://www.drupal.org/docs/develop/using-composer/using-composer-to-install-drupal-and-manage-dependencies#third-party-libraries) of Drupal
 * Installed node.js (min. v13)
 * Installed yarn or npm (Drupal Community recommends Yarn.)
 
@@ -107,6 +107,9 @@ theme's root):
 * ESlint
 * Prettier
 * StyleLint
+
+Set proper theme development settings: disable caching and aggregation but
+turned on Twig debug. See in [official documentation](https://www.drupal.org/node/2598914).
 
 ## Theme overview
 
