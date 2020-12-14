@@ -1,0 +1,55 @@
+/**
+ * @file
+ * Long Text Field Component
+ *
+ * Theming long text search fields
+ */
+
+/**
+  * Imports
+ */
+@import "../_global.importer";
+
+.c-field--type-text-long,
+.c-field--type-text-with-summary {
+  strong,
+  b {
+    color: $color-brand;
+    font-weight: 700;
+  }
+
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    margin: 1.5em 0 1em;
+    color: $color-brand;
+  }
+
+  img {
+    margin-top: 1em;
+    margin-bottom: 1em;
+  }
+
+  p + img,
+  p + .c-media--type-image img {
+    margin-top: 0;
+  }
+
+  .align-center {
+    display: block;
+    margin-right: auto;
+    margin-left: auto;
+  }
+
+  .align-left {
+    float: left;
+    margin-right: 1em;
+  }
+
+  .align-right {
+    float: right;
+    margin-left: 1em;
+  }
+}

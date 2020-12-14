@@ -1,0 +1,17 @@
+/**
+* @file
+ * Form Settings
+ *
+ * Only global wide form settings. We can use them in any form-related
+ * component as default settings.
+ */
+
+/**
+ * Form Borders
+ */
+$global-form-border-size-base  : 2px;
+$global-form-border-size-left  : 6px;
+$global-form-border-radius     : 2px;
+
+$global-form-padding-y         : 1.4rem;
+$global-form-padding-x         : 2.4rem;

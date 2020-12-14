@@ -1,0 +1,177 @@
+/**
+ * @file
+ * Type Element
+ *
+ * Theming text elements.
+ */
+
+/**
+  * Imports
+ */
+@import "../_global.importer";
+
+/**
+ * Settings
+ */
+
+/**
+ * Global selected text
+ */
+$base-selected-text             : true;
+$base-selected-text-color       : #fff;
+$base-selected-text-background  : $color-brand;
+
+/**
+ * Paragraph margins
+ */
+$base-paragraph-margins         : true;
+$base-paragraph-margin-size     : 1em;
+
+/**
+ * Inline and Code Blocks
+ */
+$base-code-tab-size             : 2;
+
+/**
+ * Global Link Element
+ */
+
+// :link, :visited states
+$base-link-color                : $color-brand;
+
+// :hover, :focus, :active states
+$base-link-color-accent         : darken($base-link-color, 15%);
+
+// underlined links
+$base-link-text-decoration      : none;
+
+// outlined links in :focus state
+$base-link-outline              : none;
+
+/**
+ * Base typography
+ */
+html {
+  -webkit-tap-highlight-color: transparent;
+  font-size: 62.5%; // 1rem = 10px; 10px/16px = 62.5%
+}
+
+body {
+  @include type($global-font-size);
+
+  letter-spacing: -0.028rem;
+  font-family: $global-font-family;
+  font-weight: 400;
+}
+
+/**
+ * Type elements
+ */
+
+/**
+ * Styling selected text
+ */
+@if ($base-selected-text == true) {
+  ::selection {
+    @include colors($base-selected-text-color, $base-selected-text-background);
+  }
+}
+
+/**
+ * Paragraph Element
+ */
+@if ($base-paragraph-margins == true) {
+  p {
+    &:not(:last-child) {
+      margin-bottom: $base-paragraph-margin-size;
+    }
+  }
+}
+
+/**
+ * Code and Preformatted Elements
+ */
+pre,
+code {
+  text-align: left;
+  word-spacing: normal;
+  word-wrap: normal;
+  word-break: normal;
+  tab-size: $base-code-tab-size;
+  hyphens: none;
+}
+
+/**
+ * Global Link Element
+ */
+a {
+  @include global-transition;
+
+  &:link,
+  &:visited {
+    text-decoration: $base-link-text-decoration;
+  }
+
+  &:not([class]) {
+    color: $base-link-color;
+
+    &:focus {
+      outline: $base-link-outline;
+    }
+
+    &:focus,
+    &:hover,
+    &:visited,
+    &:active {
+      color: $base-link-color-accent;
+    }
+  }
+}
+
+/**
+ * Default Heading
+ */
+
+h1:not([class]),
+h2:not([class]),
+h3:not([class]),
+h4:not([class]),
+h5:not([class]),
+h6:not([class]) {
+  font-family: $heading-font-family;
+}
+
+h1:not([class]) {
+  @include type($heading1-font-size);
+}
+
+h2:not([class]) {
+  @include type($heading2-font-size);
+}
+
+h3:not([class]) {
+  @include type($heading3-font-size);
+}
+
+h4:not([class]) {
+  @include type($heading4-font-size);
+}
+
+h5:not([class]) {
+  @include type($heading5-font-size);
+}
+
+h6:not([class]) {
+  @include type($heading6-font-size);
+}
+
+ul[class],
+ol[class] {
+  list-style: none;
+}
+
+ul:not([class]),
+ol:not([class]) {
+  margin: 1em 0;
+  padding-left: 1.1em;
+}

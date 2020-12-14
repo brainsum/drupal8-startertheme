@@ -1,0 +1,128 @@
+/**
+ * @file
+ * Hamburger Component
+ *
+ * Theming hamburger button for site navigation.
+ */
+
+/**
+  * Imports
+ */
+@import "../_global.importer";
+
+/**
+ * Settings
+ */
+$hamburger-padding-x                    : 0;
+$hamburger-padding-y                    : 0;
+$hamburger-spinner-width                : 3.1rem;
+$hamburger-spinner-width--middle        : 2.6rem;
+$hamburger-spinner-height               : 0.5rem;
+$hamburger-spinner-spacing              : 0.6rem;
+$hamburger-spinner-border-radius        : $hamburger-spinner-height / 2;
+$hamburger-spinner-color                : $color-brand;
+
+.c-hamburger {
+  overflow: visible;
+  margin: 3rem 0 3.5rem 4rem;
+  padding: $hamburger-padding-y $hamburger-padding-x;
+  cursor: pointer;
+  transition: opacity 0.5s ease;
+  color: inherit;
+  border: 0;
+  background: none;
+
+  @include breakpoint(small) {
+    display: none;
+  }
+
+  &:focus {
+    outline: none;
+  }
+
+  &.is-active {
+    visibility: visible;
+    opacity: 1;
+  }
+
+  &__box {
+    position: relative;
+    display: block;
+    width: $hamburger-spinner-width;
+    height:
+      $hamburger-spinner-height * 3 +
+      $hamburger-spinner-spacing * 2;
+  }
+
+  &__spinner {
+    top: $hamburger-spinner-height / 2;
+    display: block;
+    margin-top: $hamburger-spinner-height / -2;
+    transition: background 0s 0.13s linear;
+
+    &::before,
+    &::after {
+      display: block;
+      content: "";
+    }
+
+    &,
+    &::before,
+    &::after {
+      position: absolute;
+      width: $hamburger-spinner-width;
+      height: $hamburger-spinner-height;
+      transition: transform 0.15s ease;
+      border-radius: $hamburger-spinner-border-radius;
+      background: $hamburger-spinner-color;
+    }
+
+    &::before {
+      top:
+        $hamburger-spinner-height +
+        $hamburger-spinner-spacing;
+      right: 0;
+      width: $hamburger-spinner-width--middle;
+      transition:
+        top 0.1s 0.2s cubic-bezier(0.33333, 0.66667, 0.66667, 1),
+        transform 0.13s cubic-bezier(0.55, 0.055, 0.675, 0.19);
+
+      .c-hamburger.is-active & {
+        top: 0;
+        right: auto;
+        width: $hamburger-spinner-width;
+        transition:
+          top 0.1s 0.15s cubic-bezier(0.33333, 0, 0.66667, 0.33333),
+          transform 0.13s 0.22s cubic-bezier(0.215, 0.61, 0.355, 1);
+        transform:
+          translate3d(0, $hamburger-spinner-spacing + $hamburger-spinner-height, 0)
+          rotate(45deg);
+        background: $hamburger-spinner-color;
+      }
+    }
+
+    &::after {
+      top: ($hamburger-spinner-height * 2) + ($hamburger-spinner-spacing * 2);
+      bottom: ($hamburger-spinner-spacing + $hamburger-spinner-height) * -1;
+      transition:
+        top 0.2s 0.2s cubic-bezier(0.33333, 0.66667, 0.66667, 1),
+        transform 0.13s cubic-bezier(0.55, 0.055, 0.675, 0.19);
+
+      .c-hamburger.is-active & {
+        top: 0;
+        transition:
+          top 0.2s cubic-bezier(0.33333, 0, 0.66667, 0.33333),
+          transform 0.13s 0.22s cubic-bezier(0.215, 0.61, 0.355, 1);
+        transform:
+          translate3d(0, $hamburger-spinner-spacing + $hamburger-spinner-height, 0)
+          rotate(-45deg);
+        background: $hamburger-spinner-color;
+      }
+    }
+
+    .c-hamburger.is-active & {
+      transition-delay: 0.22s;
+      background: none;
+    }
+  }
+}

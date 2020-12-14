@@ -1,0 +1,23 @@
+/**
+ * @file
+ * Color Mixins
+ *
+ * Part of Shake.sass.
+ * @author Krisztian Pinter <krisz@keeteean.com>
+ *
+ * Mixins and functions for color calculations, generations.
+ */
+
+/**
+ * Simple color and background color generator
+ *
+ * Add color then background color from Sass variables.
+ *
+ *
+ * @example
+ *  @include colors($body-color, $body-background);
+ */
+@mixin colors($color, $bgcolor) {
+  color: $color;
+  background-color: $bgcolor;
+}

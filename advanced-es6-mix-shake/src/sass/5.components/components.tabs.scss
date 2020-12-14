@@ -1,0 +1,214 @@
+/**
+  * @file
+  * Tabs Component
+ */
+
+/**
+  * Imports
+ */
+@import "../_global.importer";
+
+/**
+ * Settings
+ */
+$tabs-tab-background        : $color-grey;
+$tabs-tab-hover-background  : $color-grey-80;
+$tabs-tab-color             : #fff;
+$tabs-tab-hover-color       : #fff;
+$tabs-tab-border-color      : $color-brand;
+/**
+ * Local Tasks Block
+ */
+.c-block-local-tasks-block {
+  margin: 1em 0;
+}
+
+/**
+ * Tab List
+ */
+.tabs {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  margin: 0;
+  padding: 0 0 1px;
+  background: $tabs-tab-background;
+
+  @include breakpoint(medium) {
+    flex-direction: row;
+    flex-wrap: wrap;
+  }
+
+  /**
+   * Tab
+   */
+  &__tab {
+    display: none;
+    margin: 0 0 -1px;
+
+    @include breakpoint(medium) {
+      display: flex;
+      margin: 0 -1px -1px 0;
+    }
+
+    html:not(.js) &,
+    .tabs.is-expanded &,
+    &.is-active {
+      display: flex;
+    }
+
+    .tabs--secondary & {
+      display: block;
+
+      @include breakpoint(medium) {
+        display: flex;
+      }
+    }
+  }
+
+  /**
+   * Link
+   */
+  &__link {
+    display: flex;
+    flex-grow: 1;
+    align-items: center;
+    height: 5rem;
+    padding: 0 2.5rem;
+    transition: background-color 0.2s;
+    text-decoration: none;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    color: $tabs-tab-color;
+    border: 1px solid $tabs-tab-background;
+    background: $tabs-tab-background;
+    font-size: 1.4rem;
+
+    .tabs--secondary & {
+      text-transform: none;
+
+      @include breakpoint(medium) {
+        border-top-color: transparent;
+        border-right-color: transparent;
+        border-left-color: transparent;
+        background-color: transparent;
+      }
+    }
+
+    &:focus {
+      position: relative;
+      z-index: 1;
+      border-color: $color-brand;
+      outline: none;
+    }
+
+    &:hover {
+      color: $tabs-tab-hover-color;
+      background: $tabs-tab-hover-background;
+    }
+
+    &.is-active {
+      @include font-smooth;
+
+      position: relative;
+      font-weight: 700;
+
+      &:after {
+        position: absolute;
+        bottom: -1px;
+        left: -1px;
+        height: calc(100% + 2px);
+        content: "";
+        border-left: 0.6rem solid $tabs-tab-border-color;
+
+        @include breakpoint(medium) {
+          left: 0;
+          width: 100%;
+          height: auto;
+          border-top: 0.6rem solid $tabs-tab-border-color;
+          border-left: 0;
+        }
+      }
+    }
+  }
+
+  /**
+   * Toggle Button for Mobile
+   */
+  &__trigger {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 5rem;
+    margin: 0 0 0 -1px;
+    cursor: pointer;
+    border: solid 1px $tabs-tab-background;
+    background-color: $tabs-tab-background;
+
+    @include breakpoint(medium) {
+      display: none;
+    }
+
+    &:hover {
+      background-color: $tabs-tab-hover-background;
+    }
+
+    &:focus {
+      position: relative;
+      border-color: $tabs-tab-border-color;
+      outline: none;
+    }
+
+    html:not(.js) & {
+      display: none;
+    }
+
+    /**
+     * Toggle Icon (Hamburger or Close)
+     */
+    &-icon {
+      position: relative;
+      width: 1.8rem;
+      height: 10px;
+      margin-top: -2px;
+
+      .tabs__trigger[aria-expanded="true"] & {
+        > div {
+          &:nth-child(1) {
+            top: calc(50% + 1px);
+            transform: rotate(45deg);
+          }
+
+          &:nth-child(2) {
+            opacity: 0;
+          }
+
+          &:nth-child(3) {
+            top: calc(50% + 1px);
+            transform: rotate(-45deg);
+          }
+        }
+      }
+
+      > div {
+        position: absolute;
+        left: 0;
+        width: 100%;
+        transition: transform 0.2s, opacity 0.2s, top 0.2s;
+        border-top: solid 2px $tabs-tab-color;
+
+        &:nth-child(1) {
+          top: 0;
+        }
+
+        &:nth-child(2) {
+          top: calc(50% + 1px);
+        }
+
+        &:nth-child(3) {
+          top: calc(100% + 2px);
+        }
+      }
+    }
+  }
+}

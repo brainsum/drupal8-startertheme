@@ -1,0 +1,32 @@
+/**
+* @file
+ * Color Settings
+ *
+ * - Only global color variables. Local color variables you can find in module
+ *   files in `3.base` or `5.components` directories.
+ * - Only assigned colors. You can't use any color tools here.
+ * - Here are only color variables and maps, no any assigned color variables.
+ */
+
+/**
+ * Color Definitions
+ */
+$color-blue             : #0091cc;
+$color-yellow           : #f7ca00;
+$color-turquoise        : #66d1ca;
+$color-turquoise--dark  : #53c2bc;
+$color-grey             : #333;
+$color-grey-120         : scale-color($color-grey, $lightness: -20%);
+$color-grey-80          : scale-color($color-grey, $lightness: 20%);
+$color-grey-60          : scale-color($color-grey, $lightness: 40%);
+$color-grey-40          : scale-color($color-grey, $lightness: 60%);
+$color-grey-20          : scale-color($color-grey, $lightness: 80%);
+
+/**
+ * Colors by Functions
+ */
+$color-brand            : $color-yellow;
+$color-primary          : $color-blue;
+$color-secondary        : $color-turquoise;
+$global-color           : #000;
+$global-background      : #fff;

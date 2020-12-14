@@ -1,0 +1,71 @@
+# Theme's name for admin UI, change for your project, like Diginomica Theme
+name: "BRAINSUM's Drupal 8-9 startertheme"
+type: theme
+# Short description text for admin UI, change for your project
+description: "Drupal 8 and 9 coding standards ready startertheme powered by Laravel Mix (Webpack), bundled with Shake.sass sass framework without any dependency (no base theme too)."
+core: 8.x
+core_version_requirement: ^8 || ^9
+# website logo, begin with Drupal 8.6 you can use SVG or PNG format too
+logo: logo.svg
+# screenshot cover image for admin UI (588x438): take a screenshot about home page
+screenshot: screenshot.png
+package: brainsum
+# Defines the base theme, change it for your needs
+base theme: false
+# Defines libraries group in which we can add css/js.
+libraries:
+  - starter_theme/global
+# Regions, change it for your needs (don't forget change page template too)
+regions:
+  top_bar: Top Bar
+  header: Header
+  navigation: Navigation
+  featured: Featured
+  top: Bottom
+  content: Content
+  sidebar: Sidebar
+  bottom: Bottom
+  footer: Footer
+  admin: Admin Tools
+# Here we turn off or replace many css/js files come from core/contrib modules:
+libraries-override:
+  system/base:
+    css:
+      component:
+        css/components/ajax-progress.module.css: css/components/components.ajax-progress.css
+        css/components/align.module.css: false
+        css/components/autocomplete-loading.module.css: css/components/components.autocomplete.css
+        css/components/fieldgroup.module.css: false
+        css/components/container-inline.module.css: false
+        css/components/clearfix.module.css: false
+        css/components/details.module.css: false
+        css/components/hidden.module.css: false
+        css/components/item-list.module.css: false
+        css/components/js.module.css: css/utilities/utilities.js.css
+        css/components/nowrap.module.css: false
+        css/components/position-container.module.css: false
+        css/components/reset-appearance.module.css: false
+        css/components/resize.module.css: false
+        css/components/sticky-header.module.css: false
+        css/components/tabledrag.module.css: false
+        css/components/tablesort.module.css: false
+  core/drupal.checkbox: false
+  core/drupal.announce:
+    js:
+      misc/announce.js: js/tools/tools.announce.js
+  core/drupal.dropbutton: false
+  core/drupal.vertical-tabs:
+    js:
+      misc/vertical-tabs.js: false
+  dropdown_language/dropdown-language-selector: false
+  field_group/element.horizontal_tabs:
+    js:
+      formatters/tabs/horizontal-tabs.js: js/components/components.horizontal-tabs.js
+  user/drupal.user:
+    css:
+      component:
+        css/user.module.css: css/components/components.user.css
+  views.module:
+    css:
+      component:
+        css/views.module.css: false

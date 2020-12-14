@@ -1,0 +1,183 @@
+/**
+ * @file
+ * Table Component
+ *
+ * CSS class based table theming, like responsive table.
+ */
+
+/**
+  * Imports
+ */
+@import "../_global.importer";
+
+/**
+ * Settings
+ */
+
+/**
+ * Responsive Table
+ */
+$components-responsive-table                  : true;
+$components-responsive-table-label-padding    : 0 0.6em 0 0;
+$components-responsive-table-label-width      : 30%;
+$components-responsive-table-content-width    : 67%;
+
+/**
+ * Responsive Table Component
+ *
+ * Responsive CSS only table component based on Filament Group's Tablesaw.
+ * There is no any styling only layout needed properties.
+ * @see `3.base/_base.table.scss` for base theming `<table>` element.
+ * @link https://github.com/filamentgroup/tablesaw
+ *
+ * @require {boolean} $base-table-normalize Should be true! <3.base/_base.reset.scss>
+ *
+ * @example
+ *   <table class="c-table">
+ *     <thead>
+ *       <tr>
+ *         <th>name</th>
+ *         <th>genre</th>
+ *         <th>release date</th>
+ *       </tr>
+ *     </thead>
+ *     <tbody>
+ *       <tr>
+ *         <td>
+ *           <b class="c-table__cell-label">name</b>
+ *           <span class="c-table__cell-content">The Shawshank Redemption</b>
+ *         </td>
+ *         <td>
+ *           <b class="c-table__cell-label">genre</b>
+ *           <span class="c-table__cell-content">Crime, Drama</b>
+ *         </td>
+ *         <td>
+ *           <b class="c-table__cell-label">release date</b>
+ *           <span class="c-table__cell-content">14 October 1994</b>
+ *         </td>
+ *       </tr>
+ *     </tbody>
+ *   </table>
+ *
+ * 1. Show the table cells as a block level element.
+ * 2. Make the label elements a percentage width.
+ * 3. For grouped headers, have a different style to visually separate the
+ *    levels by classing the first label in each col group.
+ * 4. Avoid double strokes when stacked.
+ * 5. Show the table header rows.
+ * 6. Hide the labels in each cell.
+ */
+@if ($components-responsive-table == true) {
+  .c-table {
+    max-width: 100%;
+    padding: 0;
+    empty-cells: show;
+    border: 0;
+
+    * {
+      box-sizing: border-box;
+    }
+
+    /**
+     * Theming table rows.
+     */
+    tr {
+      @include breakpoint(medium) {
+        display: table-row;
+      }
+    }
+
+    tbody {
+      tr {
+        display: block;
+        width: 100%;
+
+        @include breakpoint(medium) {
+          display: table-row;
+        }
+      }
+    }
+
+    /**
+     * Theming table cells.
+     */
+    td,
+    th {
+      display: block; // 1.
+      text-align: left;
+
+      @include breakpoint(medium) {
+        display: table-cell; // 5.
+      }
+
+      .c-table__cell-label {
+        display: inline-block;
+        width: $components-responsive-table-label-width; // 2.
+        padding: $components-responsive-table-label-padding;
+        vertical-align: top;
+
+        @include breakpoint(medium) {
+          display: none !important; // 6.
+        }
+      }
+
+      .c-table__cell-label--top {
+        display: block; // 3.
+        margin: 0.4em 0; // 3.
+        padding: 0.4em 0; // 3.
+      }
+
+      .c-table__cell-content {
+        display: inline-block;
+        max-width: $components-responsive-table-content-width;
+
+        @include breakpoint(medium) {
+          display: inherit;
+          max-width: none;
+        }
+      }
+    }
+
+    thead {
+      th,
+      td {
+        display: none;
+
+        @include breakpoint(medium) {
+          display: table-cell; // 5.
+        }
+      }
+    }
+
+    tbody {
+      th,
+      td {
+        width: 100%;
+
+        @include breakpoint(medium) {
+          width: auto;
+        }
+      }
+    }
+
+    td:empty,
+    th:empty {
+      display: none;
+
+      @include breakpoint(medium) {
+        display: table-cell;
+      }
+    }
+  }
+
+  // Theming table head
+  th.c-table__group {
+    tbody & {
+      margin-top: -1px; // 4.
+    }
+
+    .c-table__cell-label {
+      display: none !important; // 4.
+    }
+  }
+}

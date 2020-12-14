@@ -1,0 +1,27 @@
+{#
+/**
+ * @file
+ * Theme overwrite for a 'form' element to attach the starter_theme/form library.
+ *
+ * Available variables
+ * - attributes: A list of HTML attributes for the wrapper element.
+ * - children: The child elements of the form.
+ *
+ * @see template_preprocess_form()
+ *
+ * @ingroup themeable
+ */
+#}
+{% block includes %}
+  {{ attach_library('starter_theme/form') }}
+{% endblock %}
+
+{%
+  set classes = [
+    'c-form'
+  ]
+%}
+
+<form{{ attributes.addClass(classes) }}>
+  {{ children }}
+</form>

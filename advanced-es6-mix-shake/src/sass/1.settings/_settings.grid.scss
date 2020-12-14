@@ -1,0 +1,36 @@
+/**
+ * @file
+ * Ggrid Settings
+ */
+
+/**
+ * Gutter
+ */
+
+/**
+ * Define Gutter Sizes
+ */
+$gutter         : 1.5rem;      // 15px
+$gutter--2x     : $gutter * 2; // 30px
+$gutter--4x     : $gutter * 4; // 60px
+
+/**
+ * Responsive Aliases for Gutters
+ */
+$gutter--small  : $gutter;
+$gutter--medium : $gutter--2x;
+$gutter--large  : $gutter--4x;
+
+/**
+ * Default gutters
+ *
+ * This setting is shared between multiple objects and utilities as the default
+ * value for gutters. You can change it also locally to each module.
+ *
+ * @type Number | List | Map
+ */
+$global-gutter-default: (
+  null          : $gutter--small,
+  small         : $gutter--medium,
+  large         : $gutter--large
+);

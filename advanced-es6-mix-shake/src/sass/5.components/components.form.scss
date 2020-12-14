@@ -1,0 +1,212 @@
+/**
+ * @file
+ * Form Component
+ *
+ * Theming common form elements. Just import it (attach the form library) where
+ * is a form item, and only theming the component-specific things stand-alone.
+ */
+
+/**
+  * Imports
+ */
+@import "../_global.importer";
+
+/**
+ * Settings
+ */
+$form-padding-y               : $global-form-padding-y;
+$form-padding-x               : $global-form-padding-x;
+$form-border-radius           : ($form-padding-y * 2 + $global-line-height * 1.8rem) / 2;
+$form-border-color            : $color-brand;
+$form-focus-color             : $color-brand;
+$form-text-color              : $color-brand;
+$form-background-color        : #fff;
+$form-placeholder-color       : rgba($form-text-color, 0.66);
+$form-boolean-border-color    : #979797;
+$form-boolean-checked-color   : $form-text-color;
+$form-boolean-size-touch      : 3.5rem;
+$form-boolean-size-mouse      : 2.6rem;
+$form-checkbox-border-radius  : 0.2rem;
+
+textarea {
+  resize: vertical;
+}
+
+.c-form {
+  /**
+   * Text form elements
+   *   - input type: text, email, number, date, time, password...
+   *   - textarea
+   */
+  &-element {
+    appearance: none;
+    width: 100%;
+    padding: $form-padding-y $form-padding-x;
+    color: $form-text-color;
+    border: 1px solid $form-border-color;
+    border-radius: $form-border-radius;
+
+    @include input-placeholder {
+      color: $form-placeholder-color;
+    }
+
+    &:focus {
+      outline: none;
+      box-shadow: 0 0 1rem rgba($form-focus-color, 0.5);
+    }
+
+    &.form-textarea {
+      min-height: $form-padding-y * 2 + 9 * $global-line-height * 1.8rem;
+
+      @include breakpoint(medium) {
+        min-height: $form-padding-y * 2 + 11 * $global-line-height * 1.8rem;
+      }
+    }
+  }
+
+  /**
+   * Boolean type form elements
+   *   - radio
+   *   - checkbox
+   */
+  &-type--boolean {
+    position: relative;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    min-height: $form-boolean-size-touch;
+    margin: 2rem 0;
+    cursor: pointer;
+    line-height: $form-boolean-size-touch;
+
+    @include breakpoint(medium) {
+      min-height: $form-boolean-size-mouse;
+      margin: 1.5rem 0;
+      line-height: $form-boolean-size-mouse;
+    }
+
+    input {
+      @include visually-hidden;
+
+      &:checked + label::after {
+        border-color: $form-boolean-checked-color;
+        background: $form-boolean-checked-color;
+      }
+
+      &:disabled,
+      &.is-disabled {
+        opacity: 0.5;
+      }
+    }
+
+    label {
+      position: relative;
+      padding-left: $form-boolean-size-touch + 2rem;
+      cursor: pointer;
+
+      @include breakpoint(medium) {
+        padding-left: $form-boolean-size-mouse + 1.5rem;
+      }
+
+      &::before {
+        position: absolute;
+        z-index: 9;
+        top: $form-boolean-size-touch * 0.2;
+        left: $form-boolean-size-touch * 0.2;
+        width: $form-boolean-size-touch * 0.6;
+        height: $form-boolean-size-touch * 0.6;
+        content: "";
+
+        @include breakpoint(medium) {
+          top: $form-boolean-size-mouse * 0.2;
+          left: $form-boolean-size-mouse * 0.2;
+          width: $form-boolean-size-mouse * 0.6;
+          height: $form-boolean-size-mouse * 0.6;
+        }
+      }
+
+      &::after {
+        position: absolute;
+        top: 0;
+        left: 0;
+        display: inline-block;
+        width: $form-boolean-size-touch;
+        height: $form-boolean-size-touch;
+        content: "";
+        cursor: pointer;
+        transition:
+          background 0.2s,
+          border 0.2s,
+          box-shadow 0.2s,
+          color 0.2s;
+        border: 1px solid $form-boolean-border-color;
+        background: $form-background-color;
+
+        @include breakpoint(medium) {
+          width: $form-boolean-size-mouse;
+          height: $form-boolean-size-mouse;
+        }
+      }
+    }
+  }
+}
+
+.js-form {
+  &-type-radio {
+    label {
+      &::before {
+        border-radius: 50%;
+        background: $form-background-color;
+      }
+
+      &::after {
+        border-radius: 50%;
+      }
+    }
+  }
+
+  &-type-checkbox {
+    label {
+      &::before {
+        // Font Awesome's check icon (https://fontawesome.com/icons/check?style=solid) with white fill has been encoded with https://www.base64encode.org/.
+        background: url(data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA1MTIgNTEyIj48cGF0aCBmaWxsPSIjZmZmIiBkPSJNMTczLjg5OCA0MzkuNDA0bC0xNjYuNC0xNjYuNGMtOS45OTctOS45OTctOS45OTctMjYuMjA2IDAtMzYuMjA0bDM2LjIwMy0zNi4yMDRjOS45OTctOS45OTggMjYuMjA3LTkuOTk4IDM2LjIwNCAwTDE5MiAzMTIuNjkgNDMyLjA5NSA3Mi41OTZjOS45OTctOS45OTcgMjYuMjA3LTkuOTk3IDM2LjIwNCAwbDM2LjIwMyAzNi4yMDRjOS45OTcgOS45OTcgOS45OTcgMjYuMjA2IDAgMzYuMjA0bC0yOTQuNCAyOTQuNDAxYy05Ljk5OCA5Ljk5Ny0yNi4yMDcgOS45OTctMzYuMjA0LS4wMDF6Ij48L3BhdGg+PC9zdmc+) no-repeat center center;
+        background-size: contain;
+      }
+
+      &::after {
+        border-radius: $form-checkbox-border-radius;
+      }
+    }
+  }
+}
+
+.field--widget-options-select,
+.c-form-item--select,
+.c-form-item-created {
+  position: relative;
+
+  &::after {
+    position: absolute;
+    top: 50%;
+    right: $form-padding-x;
+    display: block;
+    width: 0.9rem;
+    height: 0.9rem;
+    content: "";
+    transform: translateY(-50%);
+    pointer-events: none;
+    // Font Awesome's angle-down pro icon (https://fontawesome.com/icons/angle-down?style=regular) with branding color fill has been encoded with https://www.base64encode.org/.
+    background: url(data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAzMjAgNTEyIj48cGF0aCBmaWxsPSIjZjdjYTAwIiBkPSJNMTUxLjUgMzQ3LjhMMy41IDIwMWMtNC43LTQuNy00LjctMTIuMyAwLTE3bDE5LjgtMTkuOGM0LjctNC43IDEyLjMtNC43IDE3IDBMMTYwIDI4Mi43bDExOS43LTExOC41YzQuNy00LjcgMTIuMy00LjcgMTcgMGwxOS44IDE5LjhjNC43IDQuNyA0LjcgMTIuMyAwIDE3bC0xNDggMTQ2LjhjLTQuNyA0LjctMTIuMyA0LjctMTcgMHoiPjwvcGF0aD48L3N2Zz4=) no-repeat center center;
+    background-size: contain;
+
+    @include breakpoint(medium) {
+      width: 1.2rem;
+      height: 1.2rem;
+    }
+  }
+
+  select {
+    padding-right: $form-padding-x * 2;
+    cursor: pointer;
+  }
+}

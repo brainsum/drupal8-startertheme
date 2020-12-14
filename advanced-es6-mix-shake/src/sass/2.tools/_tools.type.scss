@@ -1,0 +1,99 @@
+/**
+ * @file
+ * Type Tool
+ *
+ * Inline typography related mixins.
+ */
+
+/**
+ * Responsive Type Tool
+ *
+ * Type tool contains a mixin that helps you create smart, flexible and
+ * responsive typography.
+ *
+ * Part of Shake.sass, some parts borrowed from iota.css.
+ * @author Dimitris Psaropoulos <info@harby.me>
+ * @author Krisztian Pinter <krisz@keeteean.com>
+ * @link https://www.iotacss.com/docs/tools/type
+ *
+ * @require {Mixin} generate-type-sizes <2.tools/libraries/_generate-type-sizes.scss>
+ * @require {Mixin} extract-type-sizes <2.tools/libraries/_extract-type-sizes.scss>
+ *
+ * Use it wherever you need it.
+ *
+ * @example
+ *  @include type($sizes, $breakpoints: $global-breakpoints);
+ *
+ * Type mixin accepts two parameters:
+ *
+ * @parameter {number | list | map} $sizes
+ *   A Sass map that contains font sizes and line heights for breakpoints.
+ *
+ * @parameter {map} $breakpoints
+ *   A Sass map that contains all the breakpoints.
+ *   Default value is $global-breakpoints.
+ *
+ * Examples
+ *
+ * Font size typography
+ * It will create a font size on `<h1>` tag that will have 16px font-size.
+ *
+ * @example
+ *   h1 {
+ *     @include type(1.6rem);
+ *   }
+ *
+ * Font size and line height typography
+ * It will create a font size on `<h1>` tag that will have 16px font-size and 20px line-height.
+ *
+ * @example
+ *   h1 {
+ *     @include type(1.6rem 2rem);
+ *   }
+ *
+ * Responsive font size typography
+ * It will create a font size on `<h1>` tag that will have 12px font-size on mobiles and 16px on tablets and up.
+ *
+ * @example
+ *   h1 {
+ *     @include type(
+ *       (
+ *         null : 1.2rem,
+ *         small: 1.6rem
+ *        )
+ *     );
+ *   }
+ *
+ * Responsive font size typography with line height
+ * It will create a font size on `<h1>` tag that will have 12px font-size and 16px line-height on
+ * mobiles and 16px font-size and 20px line-height on tablets and up.
+ *
+ * @example
+ *   h1 {
+ *     @include type(
+ *       (
+ *         null : (1.2rem, 1.6rem),
+ *         small: (1.6rem, 2rem)
+ *        )
+ *     );
+ *   }
+ */
+@mixin type($value, $breakpoints: $global-breakpoints) {
+  @include _generate-type-sizes($value, $breakpoints);
+}
+
+/**
+ * Font Antialiasing
+ *
+ * Makes font thickness to look the same in Firefox and Webkit.
+ * You can set this globally too in `3.base/_base.reset.scss`.
+ *
+ * @example
+ *   h1 {
+ *     @include font-smooth;
+ *   }
+ */
+@mixin font-smooth {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}

@@ -1,0 +1,11 @@
+/**
+ * @file
+ * Transitions Tool
+ */
+
+/**
+ * Global transition
+ */
+@mixin global-transition {
+  transition: all 0.2s ease;
+}

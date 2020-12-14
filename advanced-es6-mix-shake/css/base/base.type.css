@@ -1,0 +1,110 @@
+@charset "UTF-8";
+html{
+  -webkit-tap-highlight-color:transparent;
+  font-size:62.5%;
+}
+
+body{
+  font-size:ms(1);
+  line-height:1.6;
+  letter-spacing:-.028rem;
+  font-family:Open Sans,-apple-system,system-ui,BlinkMacSystemFont,Segoe UI,Roboto,Helvetica Neue,Arial,sans-serif,Apple Color Emoji,Segoe UI Emoji,Segoe UI Symbol,Noto Color Emoji;
+  font-weight:400;
+}
+@media screen and (min-width: 48em){
+  body{
+    font-size:ms(2);
+  }
+}
+::selection{
+  color:#fff;
+  background-color:#f7ca00;
+}
+p:not(:last-child){
+  margin-bottom:1em;
+}
+code,pre{
+  text-align:left;
+  word-spacing:normal;
+  word-wrap:normal;
+  word-break:normal;
+  -moz-tab-size:2;
+    -o-tab-size:2;
+       tab-size:2;
+  -webkit-hyphens:none;
+      -ms-hyphens:none;
+          hyphens:none;
+}
+a{
+  transition:all .2s ease;
+}
+a:link,a:visited{
+  text-decoration:none;
+}
+a:not([class]){
+  color:#f7ca00;
+}
+a:not([class]):focus{
+  outline:none;
+}
+a:not([class]):active,a:not([class]):focus,a:not([class]):hover,a:not([class]):visited{
+  color:#ab8b00;
+}
+h1:not([class]),h2:not([class]),h3:not([class]),h4:not([class]),h5:not([class]),h6:not([class]){
+  font-family:Open Sans,-apple-system,system-ui,BlinkMacSystemFont,Segoe UI,Roboto,Helvetica Neue,Arial,sans-serif,Apple Color Emoji,Segoe UI Emoji,Segoe UI Symbol,Noto Color Emoji;
+}
+
+h1:not([class]){
+  font-size:ms(9);
+}
+@media screen and (min-width: 48em){
+  h1:not([class]){
+    font-size:ms(12);
+  }
+}
+
+h2:not([class]){
+  font-size:ms(6);
+}
+@media screen and (min-width: 48em){
+  h2:not([class]){
+    font-size:ms(11);
+  }
+}
+
+h3:not([class]){
+  font-size:ms(5);
+}
+@media screen and (min-width: 48em){
+  h3:not([class]){
+    font-size:ms(8);
+  }
+}
+
+h4:not([class]){
+  font-size:ms(4);
+}
+@media screen and (min-width: 48em){
+  h4:not([class]){
+    font-size:ms(6);
+  }
+}
+
+h5:not([class]){
+  font-size:ms(3);
+}
+@media screen and (min-width: 48em){
+  h5:not([class]){
+    font-size:ms(5);
+  }
+}
+
+ol[class],ul[class]{
+  list-style:none;
+}
+
+ol:not([class]),ul:not([class]){
+  margin:1em 0;
+  padding-left:1.1em;
+}
+/*# sourceMappingURL=base.type.css.map*/

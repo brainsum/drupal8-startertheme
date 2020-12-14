@@ -1,0 +1,159 @@
+/**
+ * @file
+ * Messages Component
+ *
+ * Based on Olivero Theme.
+ */
+
+/**
+  * Imports
+ */
+@import "../_global.importer";
+
+/**
+ * Settings
+ */
+$messages-icon-size         : 3.2rem;
+$messages-close-icon-size   : 2.5rem;
+$messages-color             : #fff;
+$messages-background-color  : $color-turquoise--dark;
+$messages-color--error      : $color-turquoise--dark;
+$messages-color--warning    : $color-turquoise--dark;
+$messages-color--status     : $color-turquoise--dark;
+$messages-color--info       : $color-turquoise--dark;
+$messages-focus-color       : $color-yellow;
+
+.messages-list {
+  margin-top: $gutter--2x;
+  margin-bottom: $gutter--2x;
+}
+
+.messages {
+  min-height: $messages-icon-size + 3.6rem;
+  padding: 1.8rem 2.7rem;
+  border-left: 1rem solid transparent;
+  outline: solid 1px transparent;
+  background-color: $color-grey;
+
+  &--error {
+    border-left-color: $messages-color--error;
+  }
+
+  &--warning {
+    border-left-color: $messages-color--warning;
+  }
+
+  &--status {
+    border-left-color: $messages-color--status;
+  }
+
+  &--info {
+    border-left-color: $messages-color--info;
+  }
+
+  &.is-hidden {
+    visibility: hidden;
+    height: 0;
+    min-height: 0;
+    padding: 0;
+  }
+
+  /* Additional specificity to override contrib modules. */
+  &.messages-list__item {
+    background-image: none;
+  }
+}
+
+.messages__list {
+  margin: 0;
+  padding: 0;
+}
+
+.messages:not(.hidden) ~ .messages {
+  margin-top: $gutter--2x;
+}
+
+.messages__item + .messages__item {
+  margin-top: $gutter;
+}
+
+.messages__container {
+  display: flex;
+}
+
+.messages__header {
+  flex-shrink: 0;
+  margin-right: $gutter--2x;
+}
+
+.messages__content {
+  flex: 1;
+  max-width: calc(100% - (#{$messages-icon-size} + #{$gutter--2x} + #{$messages-close-icon-size} + #{$gutter--2x}));
+  padding-top: 0.3rem;
+  color: #fff;
+}
+
+.messages__button {
+  flex-shrink: 0;
+  margin-left: $gutter--2x;
+  padding-top: 0.3rem;
+}
+
+.messages__close {
+  position: relative;
+  width: $messages-close-icon-size;
+  height: $messages-close-icon-size;
+  padding: 0;
+  cursor: pointer;
+  vertical-align: top;
+  border: 0;
+  border-radius: 50%;
+  background: none;
+  appearance: none;
+
+  &::before,
+  &::after {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    display: block;
+    width: 3.3rem;
+    height: 0.2rem;
+    content: "";
+    background-color: #fff;
+  }
+
+  &::before {
+    transform: translate(-50%, -50%) rotate(45deg);
+  }
+
+  &::after {
+    transform: translate(-50%, -50%) rotate(-45deg);
+  }
+
+  &:hover {
+    &::before,
+    &::after {
+      background-color: #fff;
+    }
+  }
+
+  &:focus {
+    outline: 2px solid $messages-focus-color;
+    outline-offset: 1px;
+  }
+}
+
+.messages__icon {
+  vertical-align: top;
+  fill: #fff;
+}
+
+.messages a {
+  color: #fff !important;
+}
+
+.messages pre {
+  margin: 0;
+  white-space: normal;
+}

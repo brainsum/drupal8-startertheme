@@ -1,0 +1,32 @@
+/**
+ * @file
+ * Clearfix Utility
+ *
+ * The clearfix utility is used on elements that need to automatically clear
+ * their child elements.
+ *
+ * Part of Shake.sass, based on iota.css.
+ * @author Dimitris Psaropoulos <info@harby.me>
+ * @author Krisztian Pinter <krisz@keeteean.com>
+ * @link https://www.iotacss.com/docs/utilities/clearfix
+ *
+ * @require {mixin} %clearfix <2.tools/_clearfix.scss>
+ *
+ * @example
+ *   <div class="u-clearfix">
+ *    <div>Floated item</div>
+ *    <div>Floated item</div>
+ *  </div>
+*/
+
+/**
+  * Imports
+ */
+@import "../2.tools/tools.clearfix";
+
+/**
+ * Clearfix Utility
+ */
+.u-clearfix {
+  @include clearfix;
+}

@@ -1,0 +1,13 @@
+/**
+ * @file
+ * Button Tool
+ *
+ * Button mixins for different DOMs.
+ */
+
+@mixin button {
+  @include font-smooth;
+  @include global-transition;
+
+  display: inline-flex;
+}

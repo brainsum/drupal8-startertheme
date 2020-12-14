@@ -1,0 +1,16 @@
+/**
+ * @file
+ * Button Component
+ *
+ * Theming buttons.
+ */
+
+/**
+  * Imports
+ */
+@import "../_global.importer";
+
+a.c-button,
+input.button {
+  @include button;
+}

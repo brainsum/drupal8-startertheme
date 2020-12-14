@@ -1,0 +1,75 @@
+global:
+  version: 1.0.0
+  css:
+    base:
+      css/base/base.reset.css: {}
+      css/base/base.page.css: {}
+      css/base/base.type.css: {}
+    layout:
+      css/layout/objects.container.css: {}
+      css/layout/objects.grid.css: {}
+      css/layout/objects.media.css: {}
+    component:
+      css/components/components.page.css: {}
+      css/components/components.type.css: {}
+    theme:
+      css/utilities/utilities.clearfix.css: {}
+      css/utilities/utilities.stretched-link.css: {}
+      css/utilities/utilities.text.css: {}
+      css/utilities/utilities.video.css: {}
+      css/utilities/utilities.visibility.css: {}
+  js:
+    js/tools/tools.svgxuse.js: {}
+#    js/base/base.global.js: {}
+
+button:
+  version: 1.0.0
+  css:
+    component:
+      css/components/components.button.css: { preprocess: false }
+
+field.long-text:
+  version: 1.0.0
+  css:
+    component:
+      css/components/components.field.long-text.css: { preprocess: false }
+
+form:
+  version: 1.0.0
+  css:
+    component:
+      css/components/components.form.css: { preprocess: false }
+
+navigation:
+  version: 1.0.0
+  css:
+    component:
+      css/components/components.hamburger.css: { preprocess: false }
+
+messages:
+  version: 1.0.0
+  css:
+    component:
+      css/components/components.messages.css: { preprocess: false }
+  js:
+    js/components/components.messages.js: { preprocess: false }
+
+page.home:
+  version: 1.0.0
+  css:
+    theme:
+      css/pages/pages.home.css: { preprocess: false }
+
+page.subpage:
+  version: 1.0.0
+  css:
+    theme:
+      css/pages/pages.subpage.css: { preprocess: false }
+
+tabs:
+  version: 1.0.0
+  css:
+    theme:
+      css/components/components.tabs.css: { preprocess: false }
+  js:
+    js/components/components.tabs.js: { preprocess: false }

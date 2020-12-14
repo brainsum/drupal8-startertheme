@@ -1,0 +1,31 @@
+/**
+ * @file
+ * Clearfix Tool
+ *
+ * The clearfix utility is used on elements that need to automatically clear
+ * their child elements.
+ *
+ * Part of Shake.sass, based on iota.css.
+ * @author Dimitris Psaropoulos <info@harby.me>
+ * @author Krisztian Pinter <krisz@keeteean.com>
+ * @see 6.utilities/_utilities.clearfix for BEM css classed version
+ *
+ * Use it wherever you need it.
+ *
+ *
+ * @example
+ *   .o-grid {
+ *     @include clearfix;
+ *   }
+ */
+
+/**
+ * Clearfix mixin
+ */
+@mixin clearfix {
+  &::after {
+    display: table;
+    clear: both;
+    content: "";
+  }
+}

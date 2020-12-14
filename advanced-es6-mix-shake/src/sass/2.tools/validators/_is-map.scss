@@ -1,0 +1,17 @@
+/**
+ * @file
+ * Is It a Sass Map?
+ *
+ * Check the given value's type is sass map or not.
+ *
+ * Part of Shake.sass, borrowed from iota.css.
+ * @author Dimitris Psaropoulos <info@harby.me>
+ * @type Function
+ *
+ * @parameter {string | number | map} $number - The given css value.
+ * @access private
+ */
+
+@function _is-map($map) {
+  @return type-of($map) == "map";
+}

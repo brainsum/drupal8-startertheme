@@ -1,0 +1,34 @@
+/**
+ * @file
+ * Override Drupal User Module
+ */
+
+/**
+  * Imports
+ */
+@import "../_global.importer";
+
+.password-strength {
+  margin: $gutter 2.4rem;
+
+  &__title,
+  &__text {
+    display: inline;
+    font-size: 1.4rem;
+  }
+
+  &__meter {
+    height: 1rem;
+    background-color: $color-grey-60;
+  }
+
+  &__indicator {
+    width: 0;
+    height: 100%;
+    background-color: $color-brand;
+  }
+}
+
+.password-confirm-match {
+  visibility: hidden;
+}

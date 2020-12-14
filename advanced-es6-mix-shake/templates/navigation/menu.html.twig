@@ -1,0 +1,97 @@
+{#
+/**
+ * @file
+ * Theme override for all naviagtion menu.
+ *
+ * Custom CSS classes and attributes.
+ *
+ * Available variables:
+ * - menu_name: The machine name of the menu.
+ * - items: A nested list of menu items. Each menu item contains:
+ *   - attributes: HTML attributes for the menu item.
+ *   - below: The menu item child items.
+ *   - title: The menu link title.
+ *   - url: The menu link url, instance of \Drupal\Core\Url
+ *   - localized_options: Menu link localized options.
+ *   - is_expanded: TRUE if the link has visible children within the current
+ *     menu tree.
+ *   - is_collapsed: TRUE if the link has children within the current menu tree
+ *     that are not currently visible.
+ *   - in_active_trail: TRUE if the link is in the active trail.
+ *
+ * @ingroup themeable
+ */
+#}
+{% import _self as menus %}
+
+{#
+  We call a macro which calls itself to render the full tree.
+  @see https://twig.symfony.com/doc/1.x/tags/macro.html
+#}
+{% set attributes = attributes.addClass('c-menu') %}
+{{ menus.menu_links(items, attributes, 0, menu_name) }}
+
+{% macro menu_links(items, attributes, menu_level, menu_name) %}
+  {% set primary_nav_level = 'c-menu--level-' ~ (menu_level + 1) %}
+  {% import _self as menus %}
+  {% if items %}
+    <ul {{ attributes.addClass('c-menu', 'c-menu--' ~ menu_name, primary_nav_level) }}>
+      {% set attributes = attributes.removeClass(primary_nav_level) %}
+      {% for item in items %}
+
+        {% if item.url.isrouted and item.url.routeName == '<nolink>' %}
+          {% set menu_item_type = 'nolink' %}
+        {% elseif item.url.isrouted and item.url.routeName == '<button>' %}
+          {% set menu_item_type = 'button' %}
+        {% else %}
+          {% set menu_item_type = 'link' %}
+        {% endif %}
+
+        {% set item_classes = [
+            'c-menu__item',
+            'c-menu__item--' ~ menu_item_type,
+            'c-menu__item--level-' ~ (menu_level + 1),
+            item.in_active_trail ? 'c-menu__item--active-trail',
+            item.below ? 'c-menu__item--has-children',
+          ]
+        %}
+
+        {% set link_classes = [
+            'c-menu__link',
+            'c-menu__link--' ~ menu_item_type,
+            'c-menu__link--level-' ~ (menu_level + 1),
+            item.in_active_trail ? 'c-menu__link--active-trail',
+            item.below ? 'c-menu__link--has-children',
+          ]
+        %}
+
+        <li{{ item.attributes.addClass(item_classes) }}>
+          {#
+            A unique HTML ID should be used, but that isn't available through
+            Twig yet, so the |clean_id filter is used for now.
+            @see https://www.drupal.org/project/drupal/issues/3115445
+          #}
+          {% set aria_id = (item.title ~ '-submenu-' ~ loop.index )|clean_id %}
+
+          {% if menu_item_type == 'link' or menu_item_type == 'nolink' %}
+            {{ link(item.title, item.url, { 'class': link_classes }) }}
+
+            {% if item.below %}
+              {{ menus.menu_links(item.below, attributes, menu_level + 1) }}
+            {% endif %}
+
+          {% elseif menu_item_type == 'button' %}
+            {{ link(link_title, item.url, {
+              'class': link_classes,
+              'data-ariacontrols': item.below ? aria_id : false,
+              })
+            }}
+
+            {% set attributes = attributes.setAttribute('id', aria_id) %}
+            {{ menus.menu_links(item.below, attributes, menu_level + 1) }}
+          {% endif %}
+        </li>
+      {% endfor %}
+    </ul>
+  {% endif %}
+{% endmacro %}
