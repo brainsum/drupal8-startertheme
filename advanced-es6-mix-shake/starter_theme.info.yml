@@ -20,11 +20,13 @@ regions:
   top_bar: Top Bar
   header: Header
   navigation: Navigation
-  featured: Featured
-  top: Bottom
+  hero: Hero
+  system: System
+  top: Top
   content: Content
-  sidebar: Sidebar
   bottom: Bottom
+  sidebar_first: Sidebar First
+  sidebar_second: Sidebar Second
   footer: Footer
   admin: Admin Tools
 # Here we turn off or replace many css/js files come from core/contrib modules:
