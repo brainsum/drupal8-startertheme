@@ -20,6 +20,7 @@ regions:
   top_bar: Top Bar
   header: Header
   navigation: Navigation
+  breadcrumb: Breadcrumb
   hero: Hero
   system: System
   top: Top
