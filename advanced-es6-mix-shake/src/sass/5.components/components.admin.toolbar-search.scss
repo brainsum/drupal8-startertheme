@@ -1,0 +1,42 @@
+/**
+ * @file
+ * Override Admin Toolbar's Search Component
+ *
+ * We need this, because we use different font size of document: 10px vs 16px.
+ * Plus need to fix a BEMit class too.
+ */
+
+/**
+  * Imports
+ */
+@import "../_global.importer";
+
+#admin-toolbar-search-tab .js-form-item.c-form-item {
+  margin-top: 0.48rem;
+  margin-bottom: 0;
+}
+
+#admin-toolbar-search-input {
+  min-height: 1.6rem;
+  margin: 0;
+  padding: 0 0.64rem;
+  color: #3b3b3b;
+  border: 1px solid #ccc;
+  border-radius: unset;
+  background: #fcfcfa;
+  font-size: 1em;
+  line-height: 2.8rem;
+}
+
+.ui-autocomplete .ui-menu-item span.admin-toolbar-search-url {
+  color: rgba(0, 0, 0, 0.5);
+}
+
+.admin-toolbar-search-autocomplete-list {
+  overflow-y: scroll;
+  max-height: 300px;
+
+  .ui-menu-item .ui-state-active {
+    margin: 0;
+  }
+}

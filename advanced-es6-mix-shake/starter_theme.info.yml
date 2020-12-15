@@ -60,6 +60,10 @@ libraries-override:
   core/drupal.vertical-tabs:
     js:
       misc/vertical-tabs.js: false
+  admin_toolbar_search/search:
+    css:
+      theme:
+        css/admin.toolbar_search.css: css/components/components.admin.toolbar-search.css
   dropdown_language/dropdown-language-selector: false
   field_group/element.horizontal_tabs:
     js:
