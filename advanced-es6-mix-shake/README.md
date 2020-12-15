@@ -83,7 +83,7 @@ Install all local development-needed npm modules:
 
 ```bash
 cd web/themes/custom/stater_theme/
-npm install
+yarn install
 ```
 
 Modify BrowserSync's settings to your local
