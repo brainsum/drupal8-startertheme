@@ -1,0 +1,21 @@
+/**
+ * @file
+ * Additional theming for Admin Toolbar
+ *
+ */
+
+/**
+  * Imports
+ */
+@import "../_global.importer";
+
+.toolbar-tray a {
+  color: #565656;
+
+  &:hover,
+  &:active,
+  &:focus,
+  &.is-active {
+    color: #000;
+  }
+}

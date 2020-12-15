@@ -61,7 +61,7 @@ it's `starter_theme`. After you choose your theme name, rename
 * `*.yml` files and `.theme` file names,
 * global library name in `info.yml` file,
 * breakpoint prefix name in `breakpoints.yml` file,
-* all hook prefix in `.theme` file and in the path variable:
+* all hook prefix in `.theme` file, library name and in the path variable:
   `$variables['starter_theme_path'] = drupal_get_path('theme', 'starter_theme');`,
 * `themeRoot` variable in `tools.webfontloading.js`,
 * `theme_root` variable in `font-face*.scss` files

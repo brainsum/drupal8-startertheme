@@ -22,6 +22,12 @@ global:
     js/tools/tools.svgxuse.js: {}
 #    js/base/base.global.js: {}
 
+admin.toolbar:
+  version: 1.0.0
+  css:
+    theme:
+      css/components/components.admin.toolbar.css: { preprocess: false }
+
 button:
   version: 1.0.0
   css:
