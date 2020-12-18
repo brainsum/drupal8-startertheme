@@ -107,6 +107,7 @@ function sassCompileTask(done) {
     .pipe(sassGlob())
     .pipe(stylelint({
       fix: true,
+      failAfterError: false,
       reporters: [
         {
           formatter: 'verbose',
