@@ -44,7 +44,7 @@
    */
 
 
-  Drupal.behaviors.verticalTabs = {
+  Drupal.behaviors.starterThemeVerticalTabs = {
     attach: function attach(context) {
       var width = drupalSettings.widthBreakpoint || 640;
       var mq = "(max-width: ".concat(width, "px)");

@@ -1,6 +1,4 @@
 (function ($, Drupal) {
-  'use strict';
-
   Drupal.FieldGroup = Drupal.FieldGroup || {};
   Drupal.FieldGroup.Effects = Drupal.FieldGroup.Effects || {};
   /**
@@ -15,7 +13,7 @@
    * element inside the tab pane.
    */
 
-  Drupal.behaviors.horizontalTabs = {
+  Drupal.behaviors.starterThemeHorizontalTabs = {
     attach: function attach(context) {
       var width = drupalSettings.widthBreakpoint || 640;
       var mq = '(max-width: ' + width + 'px)';

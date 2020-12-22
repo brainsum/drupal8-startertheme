@@ -2,7 +2,7 @@
 
 * Created by: [Krisztian Pinter](kpinter@brainsum.com)
 * Created in: 2020.
-* Updated on: 2020.12.15.
+* Updated on: 2020.12.22.
 
 ## Table of Contents
 
@@ -64,6 +64,7 @@ it's `starter_theme`. After you choose your theme name, rename
 * all hook prefix in `.theme` file, library name and in the path variable:
   `$variables['starter_theme_path'] = drupal_get_path('theme', 'starter_theme');`,
 * `themeRoot` variable in `tools.webfontloading.js`,
+* prefix name of Drupal.behaviors in components JavaScrtipt files,
 * `theme_root` variable in `font-face*.scss` files
 * library name in library attaches in twigs: `field--text-long`, `form`, `html`,
   `status-messages`, `menu-local-tasks`

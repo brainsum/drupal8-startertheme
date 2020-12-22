@@ -36,7 +36,7 @@
     tabs.querySelector('.tabs__trigger').addEventListener('click', handleTriggerClick);
   }
 
-  Drupal.behaviors.tabs = {
+  Drupal.behaviors.starterThemeTabs = {
     attach: function attach(context) {
       context.querySelectorAll('[data-drupal-nav-tabs]').forEach(function (el) {
         return init(el);

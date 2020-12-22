@@ -46,7 +46,7 @@
    * @prop {Drupal~behaviorAttach} attach
    *   Attaches behaviors for vertical tabs.
    */
-  Drupal.behaviors.verticalTabs = {
+  Drupal.behaviors.starterThemeVerticalTabs = {
     attach(context) {
       const width = drupalSettings.widthBreakpoint || 640;
       const mq = `(max-width: ${width}px)`;

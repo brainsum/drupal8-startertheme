@@ -1,7 +1,4 @@
 (function ($, Drupal) {
-
-  'use strict';
-
   Drupal.FieldGroup = Drupal.FieldGroup || {};
   Drupal.FieldGroup.Effects = Drupal.FieldGroup.Effects || {};
 
@@ -16,7 +13,7 @@
    * which is called every time the user performs an update to a form
    * element inside the tab pane.
    */
-  Drupal.behaviors.horizontalTabs = {
+  Drupal.behaviors.starterThemeHorizontalTabs = {
     attach: function (context) {
 
       var width = drupalSettings.widthBreakpoint || 640;
