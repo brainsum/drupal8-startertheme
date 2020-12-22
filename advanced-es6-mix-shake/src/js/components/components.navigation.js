@@ -11,6 +11,7 @@
 
     /**
      * Toggling mobile menu with hamburger icon
+     * @param {object} e The Event object.
      */
     function mobileMenu(e) {
       if (!e.currentTarget.classList.contains(activeClass)) {
@@ -28,6 +29,7 @@
 
     /**
      * Open/close submenus
+     * @param {object} e The Event object.
      */
     function dropdown(e) {
       if (!e.currentTarget.classList.contains(activeClass)) {
