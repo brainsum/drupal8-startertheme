@@ -55,7 +55,7 @@ directory, then rename it according to your project. If you just want
 to try it you can rename it to `starter_theme`. From this when see
 `starter_theme`, it's refer to the machine name of your theme, by default
 it's `starter_theme`. After you choose your theme name, rename
-`starter_theme` everywhere to your chosen machine name:
+`starter_theme` **everywhere** to your chosen machine name, but here is a list:
 
 * directory name,
 * `*.yml` files and `.theme` file names,
@@ -65,13 +65,14 @@ it's `starter_theme`. After you choose your theme name, rename
   `$variables['starter_theme_path'] = drupal_get_path('theme', 'starter_theme');`,
 * `themeRoot` variable in `tools.webfontloading.js`,
 * prefix name of Drupal.behaviors in components JavaScrtipt files,
+* name of main menu block in `components.navigation.js`,
+* usage comment in `base.global.js` file,
 * `theme_root` variable in `font-face*.scss` files
 * library name in library attaches in twigs: `field--text-long`, `form`, `html`,
-  `status-messages`, `menu-local-tasks`
-* includes in twigs: `html`,
+  `status-messages`, `menu-local-tasks`,
+* includes in twigs: `html`, `page`, `block--system-menu-block.html.twig`,
 * `starter_theme_path` in `includes/preload` twig,
-* usage comment in `icon` macro twig file,
-* usage comment in `base.global.js` file
+* usage comment in `icon` macro twig file
 
 You need at least v13. nodejs for this theme. You can use nvm for that:
 

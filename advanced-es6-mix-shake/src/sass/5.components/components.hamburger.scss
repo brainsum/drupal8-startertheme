@@ -3,6 +3,14 @@
  * Hamburger Component
  *
  * Theming hamburger button for site navigation.
+ *
+ * Based on Hamburgers.css
+ * @author Jonathan Suh <hello@jonsuh.com>
+ * @link https://jonsuh.com/hamburgers
+ *
+ * Used "Spring" animation, but you can use something else. To do this, change
+ * active state according to hamburger type:
+ * @link https://github.com/jonsuh/hamburgers/tree/master/_sass/hamburgers/types
  */
 
 /**
@@ -16,7 +24,7 @@
 $hamburger-padding-x                    : 0;
 $hamburger-padding-y                    : 0;
 $hamburger-spinner-width                : 3.1rem;
-$hamburger-spinner-width--middle        : 2.6rem;
+$hamburger-spinner-width--middle        : 3.1rem;
 $hamburger-spinner-height               : 0.5rem;
 $hamburger-spinner-spacing              : 0.6rem;
 $hamburger-spinner-border-radius        : $hamburger-spinner-height / 2;

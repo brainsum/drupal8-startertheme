@@ -46,11 +46,16 @@ form:
     component:
       css/components/components.form.css: { preprocess: false }
 
-navigation:
+header:
   version: 1.0.0
   css:
     component:
       css/components/components.hamburger.css: { preprocess: false }
+
+navigation:
+  version: 1.0.0
+  js:
+    js/components/components.navigation.js: { preprocess: false }
 
 messages:
   version: 1.0.0

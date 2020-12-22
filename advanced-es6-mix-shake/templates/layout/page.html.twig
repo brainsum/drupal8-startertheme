@@ -57,6 +57,7 @@
 
 <div{{ attributes.addClass(page_classes) }} id="c-page">
   {% if page.top_bar or page.header or page.navigation %}
+    {{ attach_library('starter_theme/header') }}
     <header id="c-header" class="c-header" role="banner">
       {% if page.top_bar %}
         <div class="c-top-bar">

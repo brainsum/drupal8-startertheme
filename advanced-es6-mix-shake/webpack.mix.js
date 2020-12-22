@@ -88,6 +88,10 @@ mix
     'js/components/components.messages.js'
   )
   .babel(
+    'src/js/components/components.navigation.js',
+    'js/components/components.navigation.js'
+  )
+  .babel(
     'src/js/components/components.tabs.js',
     'js/components/components.tabs.js'
   )
