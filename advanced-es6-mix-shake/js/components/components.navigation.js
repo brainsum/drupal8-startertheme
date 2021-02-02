@@ -9,6 +9,7 @@
     var activeClass = 'is-active';
     /**
      * Toggling mobile menu with hamburger icon
+     * @param {object} e The Event object.
      */
 
     function mobileMenu(e) {
@@ -26,6 +27,7 @@
     }
     /**
      * Open/close submenus
+     * @param {object} e The Event object.
      */
 
 
