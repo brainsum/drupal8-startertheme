@@ -40,9 +40,7 @@ $tools-container-gutter-default   : $global-gutter-default;
  *
  * @type String | Map
  */
-$tools-container-size-default     : (
-  null        : 144rem
-);
+$tools-container-size-default     : $global-container-size-default;
 
 /**
  * Container padding
