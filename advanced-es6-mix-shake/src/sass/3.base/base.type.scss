@@ -59,7 +59,6 @@ html {
 body {
   @include type($global-font-size);
 
-  letter-spacing: -0.028rem;
   font-family: $global-font-family;
   font-weight: 400;
 }
