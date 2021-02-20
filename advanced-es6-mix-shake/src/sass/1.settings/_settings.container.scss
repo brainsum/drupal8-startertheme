@@ -1,11 +1,80 @@
 /**
  * @file
- * Container Settings
+ * Container Object Settings
+ *
+ * See details in 4.objects/_objects.container.scss.
  */
 
 /**
  * Default container
  */
 $global-container-size-default     : (
-  null        : 144rem
+  null        : 90%,
+  small       : 91%,
+  medium      : 93%,
+  large       : 129.6rem
 );
+
+/**
+ * Additional container sizes
+ *
+ * Allows you to specify more sets of max-width for your container. You can use
+ * a nested map in case you would like to specify a responsive size.
+ *
+ * @type Map
+ *
+ * @example
+ *   $global-container-size-extra: (
+ *     large: (
+ *       null : 30rem,
+ *       small: 120rem
+ *     )
+ *   );
+ */
+$global-container-size-extra     : () !default;
+
+/**
+ * Default container gutters
+ *
+ * It will create a default container with 10px padding in mobile and 20px in
+ * tablets and up.
+ *
+ * @example
+ *   $objects-container-gutter-default: (
+ *     null : 1rem,
+ *     small: 2rem
+ *   );
+ *
+ * Container with extra responsive gutter size
+ * It will create one extra container named 'large' that will have 20px padding
+ * in mobile and 40px padding in tablets and up.
+ *
+ * @example
+ *   $objects-container-gutter-default: (
+ *     large: (
+ *       null : 2rem,
+ *       small: 4rem
+ *     )
+ *   );
+ */
+
+$global-container-gutter-default  : $global-gutter-default !default;
+
+/**
+ * Additional container gutters
+ *
+ * Allows you to specify more sets of padding left and right of your container.
+ * You can use a nested map in case you would like to specify responsive gutter
+ * sizes.
+ *
+ * @type Map
+ *
+ * @example
+ *   $global-container-gutter-extra: (
+ *     large: (
+ *       null : 2rem,
+ *       small: 4rem
+ *     )
+ *   );
+ */
+$global-container-gutter-extra: () !default;

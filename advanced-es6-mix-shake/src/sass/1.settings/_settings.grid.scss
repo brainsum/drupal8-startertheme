@@ -1,6 +1,6 @@
 /**
  * @file
- * Grid Settings
+ * Grid Object Settings
  */
 
 /**
@@ -17,9 +17,9 @@ $gutter--4x     : $gutter * 4; // 60px
 /**
  * Responsive Aliases for Gutters
  */
-$gutter--small  : $gutter;
-$gutter--medium : $gutter--2x;
-$gutter--large  : $gutter--4x;
+$gutter--small  : $gutter !default;
+$gutter--medium : $gutter--2x !default;
+$gutter--large  : $gutter--4x !default;
 
 /**
  * Default gutters
@@ -33,4 +33,25 @@ $global-gutter-default: (
   null          : $gutter--small,
   small         : $gutter--medium,
   large         : $gutter--large
-);
+) !default;
+
+/**
+ * Additional grid gutters
+ *
+ * If you use additionally Container object with custom gutters
+ * you have to set custom those custom gutters for Grid object too!
+ *
+ * You can use a nested map in case you would like to specify responsive gutter
+ * sizes.
+ *
+ * @type Map
+ *
+ * @example
+ *   $global-grid-gutter-extra: (
+ *     large: (
+ *       null : 2rem,
+ *       small: 4rem
+ *     )
+ *   );
+ */
+$global-grid-gutter-extra: () !default;

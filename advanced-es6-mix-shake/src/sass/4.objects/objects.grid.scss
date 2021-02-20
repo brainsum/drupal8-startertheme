@@ -105,7 +105,7 @@ $objects-grid-class-mod      : $objects-grid-class + "--";
  *     </div>
  *   </div>
  */
-$objects-grid-gutter-extra    : ();
+$objects-grid-gutter-extra    : $global-grid-gutter-extra;
 
 /**
  * Grid Object
