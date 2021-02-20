@@ -31,4 +31,9 @@ html {
 
 body {
   min-height: 100vh;
+
+  @if ($base-body-colors == true) {
+    color: $body-color;
+    background-color: $body-background-color;
+  }
 }
