@@ -23,7 +23,7 @@
     "rule-empty-line-before": null,
     "selector-pseudo-element-colon-notation": null,
     "shorthand-property-no-redundant-values": null,
-    "unit-whitelist": [
+    "unit-allowed-list": [
       "deg",
       "em",
       "ex",
@@ -53,6 +53,11 @@
           "while"
         ]
       }
+    ]
+  },
+  "declaration-property-value-disallowed-list": {
+    "/^border/": [
+      "none"
     ]
   },
   "ignoreFiles": [

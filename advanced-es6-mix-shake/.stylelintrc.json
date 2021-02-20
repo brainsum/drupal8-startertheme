@@ -11,12 +11,15 @@
     "no-descending-specificity": null,
     "no-duplicate-selectors": null,
     "no-unknown-animations": true,
-    "media-feature-name-no-unknown": [true, {
-      "ignoreMediaFeatureNames": [
-        "prefers-reduced-motion",
-        "min--moz-device-pixel-ratio"
-      ]
-    }],
+    "media-feature-name-no-unknown": [
+      true,
+      {
+        "ignoreMediaFeatureNames": [
+          "prefers-reduced-motion",
+          "min--moz-device-pixel-ratio"
+        ]
+      }
+    ],
     "number-leading-zero": "always",
     "scss/dollar-variable-pattern": "^_?[a-z]+[\\w-]*$",
     "scss/at-extend-no-missing-placeholder": true,
@@ -80,7 +83,6 @@
       "right",
       "bottom",
       "left",
-
       "display",
       "visibility",
       "float",
@@ -93,7 +95,6 @@
       "-webkit-overflow-scrolling",
       "clip",
       "zoom",
-
       "flex",
       "flex-flow",
       "flex-direction",
@@ -103,7 +104,6 @@
       "flex-shrink",
       "flex-order",
       "flex-pack",
-
       "-ms-grid",
       "grid",
       "grid-area",
@@ -129,7 +129,6 @@
       "grid-column-gap",
       "-ms-grid-row-align",
       "-ms-grid-column-align",
-
       "place-content",
       "place-items",
       "align-content",
@@ -138,9 +137,7 @@
       "justify-content",
       "justify-items",
       "justify-self",
-
       "order",
-
       "-webkit-box-sizing",
       "-moz-box-sizing",
       "box-sizing",
@@ -160,7 +157,6 @@
       "padding-right",
       "padding-bottom",
       "padding-left",
-
       "table-layout",
       "-webkit-columns",
       "-moz-columns",
@@ -201,7 +197,6 @@
       "list-style-position",
       "list-style-type",
       "list-style-image",
-
       "content",
       "quotes",
       "counter-reset",
@@ -336,7 +331,6 @@
       "widows",
       "object-fit",
       "object-position",
-
       "opacity",
       "filter:progid:DXImageTransform.Microsoft.Alpha(Opacity",
       "-ms-filter:\\'progid:DXImageTransform.Microsoft.Alpha",
@@ -436,7 +430,6 @@
       "filter:progid:DXImageTransform.Microsoft.gradient",
       "-ms-filter:\\'progid:DXImageTransform.Microsoft.gradient",
       "text-shadow",
-
       "$font-face",
       "font",
       "font-family",
@@ -467,7 +460,20 @@
     "selector-pseudo-element-colon-notation": null,
     "shorthand-property-no-redundant-values": null,
     "string-quotes": "double",
-    "unit-whitelist": ["ch", "deg", "em", "ex", "fr", "ms", "rem", "%", "s", "px", "vw", "vh"],
+    "unit-allowed-list": [
+      "ch",
+      "deg",
+      "em",
+      "ex",
+      "fr",
+      "ms",
+      "rem",
+      "%",
+      "s",
+      "px",
+      "vw",
+      "vh"
+    ],
     "at-rule-no-unknown": [
       true,
       {
@@ -501,7 +507,7 @@
         ]
       }
     ],
-    "declaration-property-value-blacklist": {
+    "declaration-property-value-disallowed-list": {
       "/^border/": [
         "none"
       ]
