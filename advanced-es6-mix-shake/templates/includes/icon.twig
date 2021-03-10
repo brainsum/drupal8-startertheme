@@ -36,9 +36,10 @@
   <svg
     class="c-icon {{ className }}"
     role="img"
-    title="{{ title }}"
     width="{{ size|default('24') }}px"
     height="{{ size|default('24') }}px">
+    aria-label="{{ title }}">
+    <desc>{{ title }}</desc>
     <use xlink:href="/{{ base_path ~ active_theme_path() ~ '/images/icons.svg#' ~ iconId }}"></use>
   </svg>
 {% endmacro %}
