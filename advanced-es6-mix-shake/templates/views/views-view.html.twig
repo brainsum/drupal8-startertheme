@@ -50,13 +50,6 @@
     {{ title_suffix }}
   {% endblock %}
 
-  {{ exposed }}
-
-  {{ attachment_before }}
-
-  {% block filters %}
-  {% endblock %}
-
   {% if header %}
     {% block view_header %}
       <header class="c-view__header">
@@ -64,6 +57,13 @@
       </header>
     {% endblock %}
   {% endif %}
+
+  {{ exposed }}
+
+  {{ attachment_before }}
+
+  {% block filters %}
+  {% endblock %}
 
   {% if rows -%}
     {% block view_content %}

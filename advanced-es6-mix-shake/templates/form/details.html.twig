@@ -36,8 +36,9 @@
     {%
       set summary_classes = [
       'c-details__summary',
-      required ? 'js-form-required',
-      required ? 'is-form-required',
+      required ? 'js-form--required',
+      required ? 'c-form--required',
+      required ? 'is-required',
     ]
     %}
     <summary{{ summary_attributes.addClass(summary_classes) }}>
