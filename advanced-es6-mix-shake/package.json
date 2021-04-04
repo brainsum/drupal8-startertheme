@@ -1,6 +1,6 @@
 {
   "name": "brainsum_drupal8-9_startertheme",
-  "version": "2.4.0",
+  "version": "2.4.1",
   "description": "Drupal 8-9 coding standards ready startertheme powered by Laravel Mix (Webpack) without any dependency (base theme).",
   "repository": {
     "type": "git",
