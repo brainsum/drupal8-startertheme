@@ -151,9 +151,11 @@ function starter_theme_preprocess_input(&$variables) {
   ];
 
   if (in_array($type_html, $text_types_html)) {
-    $variables['attributes']['class'][] = 'form-element';
-    $variables['attributes']['class'][] = Html::getClass('form-element--type-' . $type_html);
-    $variables['attributes']['class'][] = Html::getClass('form-element--api-' . $type_api);
+    $variables['attributes']['class'][] = 'c-form-element';
+    $variables['attributes']['class'][] = Html::getClass('c-form-element--type-' . $type_html);
+    $variables['attributes']['class'][] = Html::getClass('c-form-element--api-' . $type_api);
+    // add form label value as placeholder attribute
+    $variables['attributes']['placeholder'] = (string) $variables['element']['#title'];
 
     if (!empty($variables['element']['#autocomplete_route_name'])) {
       $variables['autocomplete_message'] = t('Loading…');
@@ -161,8 +163,8 @@ function starter_theme_preprocess_input(&$variables) {
   }
 
   if (in_array($type_html, ['checkbox', 'radio'])) {
-    $variables['attributes']['class'][] = 'form-boolean';
-    $variables['attributes']['class'][] = Html::getClass('form-boolean--type-' . $type_html);
+    $variables['attributes']['class'][] = 'c-form-boolean';
+    $variables['attributes']['class'][] = Html::getClass('c-form-boolean--type-' . $type_html);
   }
 }
 
@@ -170,33 +172,35 @@ function starter_theme_preprocess_input(&$variables) {
  * Implements hook_preprocess_HOOK().
  */
 function starter_theme_preprocess_textarea(&$variables) {
-  $variables['attributes']['class'][] = 'form-element';
-  $variables['attributes']['class'][] = 'form-element--type-textarea';
-  $variables['attributes']['class'][] = 'form-element--api-textarea';
+  $variables['attributes']['class'][] = 'c-form-element';
+  $variables['attributes']['class'][] = 'c-form-element--type-textarea';
+  $variables['attributes']['class'][] = 'c-form-element--api-textarea';
+  // add form label value as placeholder attribute
+  $variables['attributes']['placeholder'] = (string) $variables['element']['#title'];
 }
 
 /**
  * Implements hook_preprocess_HOOK().
  */
 function starter_theme_preprocess_select(&$variables) {
-  $variables['attributes']['class'][] = 'form-element';
+  $variables['attributes']['class'][] = 'c-form-element';
   $variables['attributes']['class'][] = $variables['element']['#multiple'] ?
-    'form-element--type-select-multiple' :
-    'form-element--type-select';
+    'c-form-element--type-select-multiple' :
+    'c-form-element--type-select';
 }
 
 /**
  * Implements hook_preprocess_HOOK().
  */
 function starter_theme_preprocess_checkboxes(&$variables) {
-  $variables['attributes']['class'][] = 'form-boolean-group';
+  $variables['attributes']['class'][] = 'c-form-boolean-group';
 }
 
 /**
  * Implements hook_preprocess_HOOK().
  */
 function starter_theme_preprocess_radios(&$variables) {
-  $variables['attributes']['class'][] = 'form-boolean-group';
+  $variables['attributes']['class'][] = 'c-form-boolean-group';
 }
 
 /**
@@ -226,7 +230,7 @@ function starter_theme_preprocess_field_multiple_value_form(&$variables) {
     // table header cell.
     //
     // @see template_preprocess_field_multiple_value_form().
-    $header_attributes = ['class' => ['form-item__label', 'form-item__label--multiple-value-form']];
+    $header_attributes = ['class' => ['c-form-item__label', 'c-form-item__label--multiple-value-form']];
     if (!empty($variables['element']['#required'])) {
       $header_attributes['class'][] = 'js-form-required';
       $header_attributes['class'][] = 'form-required';
@@ -317,10 +321,10 @@ function starter_theme_preprocess_field__node__created(&$variables) {
  * Implements hook_form_FORM_ID_alter().
  */
 function starter_theme_form_node_preview_form_select_alter(&$form, FormStateInterface $form_state, $form_id) {
-  $form['backlink']['#options']['attributes']['class'][] = 'button';
-  $form['backlink']['#options']['attributes']['class'][] = 'button--small';
-  $form['backlink']['#options']['attributes']['class'][] = 'button--primary';
-  $form['view_mode']['#attributes']['class'][] = 'form-element--small';
+  $form['backlink']['#options']['attributes']['class'][] = 'c-button';
+  $form['backlink']['#options']['attributes']['class'][] = 'c-button--small';
+  $form['backlink']['#options']['attributes']['class'][] = 'c-button--primary';
+  $form['view_mode']['#attributes']['class'][] = 'c-form-element--small';
 }
 
 /**
