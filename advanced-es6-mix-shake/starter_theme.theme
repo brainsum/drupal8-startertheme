@@ -155,7 +155,9 @@ function starter_theme_preprocess_input(&$variables) {
     $variables['attributes']['class'][] = Html::getClass('c-form-element--type-' . $type_html);
     $variables['attributes']['class'][] = Html::getClass('c-form-element--api-' . $type_api);
     // add form label value as placeholder attribute
-    $variables['attributes']['placeholder'] = (string) $variables['element']['#title'];
+    if (isset($variables['element']['#title'])) {
+      $variables['attributes']['placeholder'] = (string) $variables['element']['#title'];
+    }
 
     if (!empty($variables['element']['#autocomplete_route_name'])) {
       $variables['autocomplete_message'] = t('Loading…');
@@ -176,7 +178,9 @@ function starter_theme_preprocess_textarea(&$variables) {
   $variables['attributes']['class'][] = 'c-form-element--type-textarea';
   $variables['attributes']['class'][] = 'c-form-element--api-textarea';
   // add form label value as placeholder attribute
-  $variables['attributes']['placeholder'] = (string) $variables['element']['#title'];
+  if (isset($variables['element']['#title'])) {
+    $variables['attributes']['placeholder'] = (string) $variables['element']['#title'];
+  }
 }
 
 /**
