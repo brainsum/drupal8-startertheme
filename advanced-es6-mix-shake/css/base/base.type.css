@@ -102,10 +102,6 @@ h6:not([class]){
   font-size:1.2rem;
 }
 
-ol[class],ul[class]{
-  list-style:none;
-}
-
 ol:not([class]),ul:not([class]){
   margin:1em 0;
   padding-left:1.1em;

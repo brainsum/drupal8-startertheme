@@ -11,6 +11,7 @@ textarea{
   color:#f7ca00;
   border:1px solid #f7ca00;
   border-radius:2.48rem;
+  background:#fff;
 }
 .c-form-element.placeholder{
   color:rgba(247, 202, 0, .66);
