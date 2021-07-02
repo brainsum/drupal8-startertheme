@@ -2,7 +2,7 @@
 
 * Created by: [Krisztian Pinter](kpinter@brainsum.com)
 * Created in: 2020.
-* Updated on: 2020.12.22.
+* Updated on: 2021.07.02.
 
 ## Table of Contents
 
@@ -113,6 +113,41 @@ theme's root):
 
 Set proper theme development settings: disable caching and aggregation but
 turned on Twig debug. See in [official documentation](https://www.drupal.org/node/2598914).
+
+### Stylelint configuration
+
+To enable auto-fix function on save for Stylelint
+
+#### In VS Code
+
+Put this to your user/project config file:
+
+``` json
+"editor.formatOnSave": false,
+"editor.codeActionsOnSave": {
+  "source.fixAll.stylelint": true
+},
+"files.autoSaveDelay": 500,
+```
+
+#### In PHPStorm
+
+Create a new file watcher: Configuration >> Tools >> File Watchers
+![PHPStorm File Watchers](https://i.imgur.com/xXIlL9p.png)
+
+Then hit the `+` button and choose the first <custom> one
+![new File Watcher](https://i.imgur.com/Xycaebl.png)
+
+In the new file watch window fill the fields:
+
+* Name: whatever you want
+* File type: choose SCSS
+* Scope: Project Files
+* Program: path to stylelint execute file in npm_modules directory like: `ProjectFileDir$/web/themes/custom/clinic/node_modules/.bin/stylelint`
+* Arguments: `$FilePath$ --fix`
+* Output paths to refresh: `$ProjectFileDir$`
+
+![create new File Watcher window](https://i.imgur.com/cMG19BZ.png)
 
 ## Theme overview
 
